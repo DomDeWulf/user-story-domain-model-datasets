@@ -1,0 +1,64 @@
+classDiagram
+    %% Project: Camperplus
+    %% Labels and association rows are preserved exactly from the original workbooks.
+    %% associationOnly marks endpoints absent from the gold-standard class list.
+    %% These additional nodes are not gold-standard classes.
+    %% No direction, multiplicity, attributes, or methods are inferred.
+    class C001["payments"]
+    class C002["rules"]
+    class C003["camp worker"]
+    class C004["attendance"]
+    class C005["facilities"]
+    class C006["photos"]
+    class C007["feedback"]
+    class C008["camper"]
+    class C009["parentguardians"]
+    class C010["schedules"]
+    class C011["activities"]
+    class C012["camp"]
+    class C013["positions"]
+    class C014["forms"]
+    class C015["supplies"]
+    class C016["camp group"]
+    class C017["counselor"]
+    class C018["parentguardian"]
+    <<associationOnly>> C018
+    class C019["form"]
+    <<associationOnly>> C019
+    class C020["group"]
+    <<associationOnly>> C020
+    class C021["rule"]
+    <<associationOnly>> C021
+    class C022["schedule"]
+    <<associationOnly>> C022
+    class C023["photo"]
+    <<associationOnly>> C023
+    class C024["facility"]
+    <<associationOnly>> C024
+    class C025["activity"]
+    <<associationOnly>> C025
+    class C026["payment"]
+    <<associationOnly>> C026
+    C008 -- C018
+    C008 -- C019
+    C008 -- C004
+    C012 -- C020
+    C012 -- C021
+    C007 -- C018
+    C020 -- C022
+    C008 -- C023
+    C008 -- C020
+    C024 -- C025
+    C020 -- C025
+    C008 -- C012
+    C012 -- C024
+    C015 -- C012
+    C020 -- C017
+    C025 -- C022
+    C013 -- C003
+    C012 -- C003
+    C012 -- C025
+    C008 -- C026
+    C007 -- C008
+    C013 -- C011
+    C006 -- C012

@@ -1,0 +1,33 @@
+classDiagram
+    %% Project: Fish&Chips
+    %% Labels and association rows are preserved exactly from the original workbooks.
+    %% associationOnly marks endpoints absent from the gold-standard class list.
+    %% These additional nodes are not gold-standard classes.
+    %% No direction, multiplicity, attributes, or methods are inferred.
+    class C001["payment"]
+    class C002["products"]
+    class C003["orders"]
+    class C004["requests"]
+    class C005["payment methods"]
+    class C006["order"]
+    <<associationOnly>> C006
+    class C007["product"]
+    <<associationOnly>> C007
+    class C008["customer"]
+    <<associationOnly>> C008
+    class C009["coupons"]
+    <<associationOnly>> C009
+    class C010["delivery person"]
+    <<associationOnly>> C010
+    class C011["cash"]
+    <<associationOnly>> C011
+    class C012["cashier"]
+    <<associationOnly>> C012
+    C006 -- C002
+    C004 -- C007
+    C008 -- C006
+    C006 -- C009
+    C010 -- C011
+    C010 -- C003
+    C006 -- C001
+    C012 -- C001

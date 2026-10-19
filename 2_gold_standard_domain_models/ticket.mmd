@@ -1,0 +1,40 @@
+classDiagram
+    %% Project: Ticket
+    %% Labels and association rows are preserved exactly from the original workbooks.
+    %% associationOnly marks endpoints absent from the gold-standard class list.
+    %% These additional nodes are not gold-standard classes.
+    %% No direction, multiplicity, attributes, or methods are inferred.
+    class C001["user"]
+    class C002["artists"]
+    class C003["events"]
+    class C004["ticket"]
+    class C005["reseller"]
+    class C006["payment"]
+    class C007["venue"]
+    class C008["genre"]
+    class C009["event types"]
+    class C010["orders"]
+    <<associationOnly>> C010
+    class C011["order"]
+    <<associationOnly>> C011
+    class C012["event"]
+    <<associationOnly>> C012
+    class C013["artist"]
+    <<associationOnly>> C013
+    class C014["resellers"]
+    <<associationOnly>> C014
+    class C015["tickets"]
+    <<associationOnly>> C015
+    C001 -- C008
+    C001 -- C009
+    C010 -- C001
+    C004 -- C010
+    C011 -- C006
+    C012 -- C009
+    C012 -- C007
+    C012 -- C013
+    C008 -- C012
+    C002 -- C001
+    C014 -- C015
+    C003 -- C004
+    C003 -- C001

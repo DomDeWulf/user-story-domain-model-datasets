@@ -1,0 +1,27 @@
+classDiagram
+    %% Project: Recycling
+    %% Labels and association rows are preserved exactly from the original workbooks.
+    %% associationOnly marks endpoints absent from the gold-standard class list.
+    %% These additional nodes are not gold-standard classes.
+    %% No direction, multiplicity, attributes, or methods are inferred.
+    class C001["questions"]
+    class C002["user"]
+    class C003["feedback"]
+    class C004["complaints"]
+    class C005["employees"]
+    class C006["recyclable waste"]
+    class C007["safe disposal events"]
+    class C008["schedule"]
+    class C009["recycling facilities"]
+    class C010["question"]
+    <<associationOnly>> C010
+    class C011["complaint"]
+    <<associationOnly>> C011
+    class C012["recycling facility"]
+    <<associationOnly>> C012
+    C002 -- C010
+    C002 -- C003
+    C002 -- C011
+    C012 -- C006
+    C012 -- C008
+    C002 -- C008

@@ -1,0 +1,38 @@
+classDiagram
+    %% Project: Supermarket
+    %% Labels and association rows are preserved exactly from the original workbooks.
+    %% associationOnly marks endpoints absent from the gold-standard class list.
+    %% These additional nodes are not gold-standard classes.
+    %% No direction, multiplicity, attributes, or methods are inferred.
+    class C001["recipes"]
+    class C002["newsletter"]
+    class C003["order"]
+    class C004["products"]
+    class C005["customer"]
+    class C006["wishlist"]
+    class C007["shopping list"]
+    class C008["delivery"]
+    class C009["store"]
+    class C010["special personal discounts"]
+    class C011["loyalty card"]
+    class C012["product"]
+    <<associationOnly>> C012
+    class C013["recipe"]
+    <<associationOnly>> C013
+    class C014["delivery service"]
+    <<associationOnly>> C014
+    class C015["personal discount"]
+    <<associationOnly>> C015
+    C005 -- C002
+    C005 -- C006
+    C005 -- C007
+    C003 -- C012
+    C005 -- C003
+    C009 -- C012
+    C007 -- C012
+    C006 -- C012
+    C005 -- C009
+    C013 -- C012
+    C005 -- C014
+    C005 -- C015
+    C005 -- C011

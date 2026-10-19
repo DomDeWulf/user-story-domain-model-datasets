@@ -1,0 +1,43 @@
+classDiagram
+    %% Project: Sports
+    %% Labels and association rows are preserved exactly from the original workbooks.
+    %% associationOnly marks endpoints absent from the gold-standard class list.
+    %% These additional nodes are not gold-standard classes.
+    %% No direction, multiplicity, attributes, or methods are inferred.
+    class C001["rooms"]
+    class C002["subscription"]
+    class C003["schedule"]
+    class C004["lessons"]
+    class C005["trainer"]
+    class C006["training sessions"]
+    class C007["payment"]
+    class C008["membership"]
+    class C009["customer"]
+    class C010["gym"]
+    class C011["booking"]
+    class C012["spots"]
+    class C013["person"]
+    class C014["room"]
+    <<associationOnly>> C014
+    class C015["lesson"]
+    <<associationOnly>> C015
+    class C016["Payment information"]
+    <<associationOnly>> C016
+    class C017["training session"]
+    <<associationOnly>> C017
+    class C018["book"]
+    <<associationOnly>> C018
+    class C019["spot"]
+    <<associationOnly>> C019
+    C014 -- C015
+    C003 -- C015
+    C009 -- C002
+    C008 -- C013
+    C009 -- C008
+    C009 -- C016
+    C003 -- C005
+    C017 -- C003
+    C009 -- C018
+    C018 -- C019
+    C018 -- C015
+    C018 -- C017
