@@ -1,0 +1,56 @@
+cff-version: 1.2.0
+message: >-
+  If you use this curated dataset, please cite the original paper below.
+  The source research appendix is listed under references; repository
+  preparation and transformations are documented in README.md.
+type: dataset
+title: "Bragilovski2025 — domain-model dataset (curated)"
+authors:
+  - family-names: Bragilovski
+    given-names: Maxim
+  - family-names: van Can
+    given-names: Ashley
+  - family-names: Sturm
+    given-names: Arnon
+  - family-names: Dalpiaz
+    given-names: Fabiano
+repository-code: "https://github.com/DomDeWulf/user-story-domain-model-datasets"
+license: CC-BY-4.0
+preferred-citation:
+  type: article
+  title: "Leveraging machines to derive domain models from user stories"
+  authors:
+    - family-names: Bragilovski
+      given-names: Maxim
+    - family-names: van Can
+      given-names: Ashley T.
+    - family-names: Dalpiaz
+      given-names: Fabiano
+    - family-names: Sturm
+      given-names: Arnon
+  journal: Requirements Engineering
+  volume: "30"
+  start: "241"
+  end: "262"
+  year: 2025
+  date-published: "2025-04-23"
+  doi: "10.1007/s00766-025-00442-9"
+  url: "https://doi.org/10.1007/s00766-025-00442-9"
+references:
+  - type: data
+    title: 'Material of the paper "Leveraging Machines to Derive Domain Models from User Stories"'
+    authors:
+      - family-names: Bragilovski
+        given-names: Maxim
+      - family-names: van Can
+        given-names: Ashley
+      - family-names: Sturm
+        given-names: Arnon
+      - family-names: Dalpiaz
+        given-names: Fabiano
+    version: v1
+    year: 2025
+    date-published: "2025-04-15"
+    doi: "10.5281/zenodo.15223349"
+    url: "https://doi.org/10.5281/zenodo.15223349"
+    license: CC-BY-4.0
