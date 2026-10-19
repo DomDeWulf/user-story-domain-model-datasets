@@ -1,20 +1,43 @@
 classDiagram
     %% Project: Planningpoker
-    %% Labels and association rows are preserved exactly from the original workbooks.
-    %% associationOnly marks endpoints absent from the gold-standard class list.
-    %% These additional nodes are not gold-standard classes.
-    %% No direction, multiplicity, attributes, or methods are inferred.
+    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
+    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
+    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
+    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["estimators"]
     class C002["round"]
     class C003["game"]
     class C004["item"]
     class C005["estimate"]
     class C006["card"]
-    class C007["estimator"]
-    <<associationOnly>> C007
+
+    %% Association (Classes Excel terms where available): game -- round
+    %% Associations Excel (Sheet1!G3:H3): game -- round.
+    %% Wording differences: none.
     C003 -- C002
+
+    %% Association (Classes Excel terms where available): estimate -- item
+    %% Associations Excel (Sheet1!G4:H4): estimate -- item.
+    %% Wording differences: none.
     C005 -- C004
+
+    %% Association (Classes Excel terms where available): item -- round
+    %% Associations Excel (Sheet1!G5:H5): item -- round.
+    %% Wording differences: none.
     C004 -- C002
-    C003 -- C007
-    C007 -- C005
+
+    %% Association (Classes Excel terms where available): game -- estimators
+    %% Associations Excel (Sheet1!G6:H6): game -- estimator.
+    %% Assumption: "estimator" -> "estimators" (singular/plural forms are assumed interchangeable).
+    C003 -- C001
+
+    %% Association (Classes Excel terms where available): estimators -- estimate
+    %% Associations Excel (Sheet1!G7:H7): estimator -- estimate.
+    %% Assumption: "estimator" -> "estimators" (singular/plural forms are assumed interchangeable).
+    C001 -- C005
+
+    %% Association (Classes Excel terms where available): game -- card
+    %% Associations Excel (Sheet1!G8:H8): game -- card.
+    %% Wording differences: none.
     C003 -- C006

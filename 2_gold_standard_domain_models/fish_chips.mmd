@@ -1,33 +1,68 @@
 classDiagram
     %% Project: Fish&Chips
-    %% Labels and association rows are preserved exactly from the original workbooks.
-    %% associationOnly marks endpoints absent from the gold-standard class list.
-    %% These additional nodes are not gold-standard classes.
-    %% No direction, multiplicity, attributes, or methods are inferred.
+    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
+    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
+    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
+    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["payment"]
     class C002["products"]
     class C003["orders"]
     class C004["requests"]
     class C005["payment methods"]
-    class C006["order"]
+    class C006["customer"]
     <<associationOnly>> C006
-    class C007["product"]
+    class C007["coupons"]
     <<associationOnly>> C007
-    class C008["customer"]
+    class C008["delivery person"]
     <<associationOnly>> C008
-    class C009["coupons"]
+    class C009["cash"]
     <<associationOnly>> C009
-    class C010["delivery person"]
+    class C010["cashier"]
     <<associationOnly>> C010
-    class C011["cash"]
-    <<associationOnly>> C011
-    class C012["cashier"]
-    <<associationOnly>> C012
-    C006 -- C002
-    C004 -- C007
-    C008 -- C006
-    C006 -- C009
-    C010 -- C011
-    C010 -- C003
-    C006 -- C001
-    C012 -- C001
+
+    %% Association (Classes Excel terms where available): orders -- products
+    %% Associations Excel (Sheet1!C3:D3): order -- products.
+    %% Assumption: "order" -> "orders" (singular/plural forms are assumed interchangeable).
+    C003 -- C002
+
+    %% Association (Classes Excel terms where available): requests -- products
+    %% Associations Excel (Sheet1!C4:D4): requests -- product.
+    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    C004 -- C002
+
+    %% Association (Classes Excel terms where available): customer -- orders
+    %% Associations Excel (Sheet1!C5:D5): customer -- order.
+    %% Assumption: "order" -> "orders" (singular/plural forms are assumed interchangeable).
+    %% Absent from Classes Excel: "customer" is associationOnly; no equivalent class identified; retained to preserve the source association.
+    C006 -- C003
+
+    %% Association (Classes Excel terms where available): orders -- coupons
+    %% Associations Excel (Sheet1!C6:D6): order -- coupons.
+    %% Assumption: "order" -> "orders" (singular/plural forms are assumed interchangeable).
+    %% Absent from Classes Excel: "coupons" is associationOnly; no equivalent class identified; retained to preserve the source association.
+    C003 -- C007
+
+    %% Association (Classes Excel terms where available): delivery person -- cash
+    %% Associations Excel (Sheet1!C7:D7): delivery person -- cash.
+    %% Wording differences: none.
+    %% Absent from Classes Excel: "delivery person" is associationOnly; no equivalent class identified; retained to preserve the source association.
+    %% Absent from Classes Excel: "cash" is associationOnly; no equivalent class identified; retained to preserve the source association.
+    C008 -- C009
+
+    %% Association (Classes Excel terms where available): delivery person -- orders
+    %% Associations Excel (Sheet1!C8:D8): delivery person -- orders.
+    %% Wording differences: none.
+    %% Absent from Classes Excel: "delivery person" is associationOnly; no equivalent class identified; retained to preserve the source association.
+    C008 -- C003
+
+    %% Association (Classes Excel terms where available): orders -- payment
+    %% Associations Excel (Sheet1!C9:D9): order -- payment.
+    %% Assumption: "order" -> "orders" (singular/plural forms are assumed interchangeable).
+    C003 -- C001
+
+    %% Association (Classes Excel terms where available): cashier -- payment
+    %% Associations Excel (Sheet1!C10:D10): cashier -- payment.
+    %% Wording differences: none.
+    %% Absent from Classes Excel: "cashier" is associationOnly; no equivalent class identified; retained to preserve the source association.
+    C010 -- C001

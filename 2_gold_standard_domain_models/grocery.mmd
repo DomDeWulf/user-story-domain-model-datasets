@@ -1,9 +1,10 @@
 classDiagram
     %% Project: Grocery
-    %% Labels and association rows are preserved exactly from the original workbooks.
-    %% associationOnly marks endpoints absent from the gold-standard class list.
-    %% These additional nodes are not gold-standard classes.
-    %% No direction, multiplicity, attributes, or methods are inferred.
+    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
+    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
+    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
+    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["employee"]
     class C002["payments"]
     class C003["schedule"]
@@ -13,17 +14,43 @@ classDiagram
     class C007["complaint"]
     class C008["salary statement"]
     class C009["working hours"]
-    class C010["contract"]
-    <<associationOnly>> C010
-    class C011["certificate"]
-    <<associationOnly>> C011
-    class C012["payment"]
-    <<associationOnly>> C012
+
+    %% Association (Classes Excel terms where available): employee -- schedule
+    %% Associations Excel (Sheet1!E3:F3): employee -- schedule.
+    %% Wording differences: none.
     C001 -- C003
+
+    %% Association (Classes Excel terms where available): employee -- working hours
+    %% Associations Excel (Sheet1!E4:F4): employee -- working hours.
+    %% Wording differences: none.
     C001 -- C009
+
+    %% Association (Classes Excel terms where available): employee -- complaint
+    %% Associations Excel (Sheet1!E5:F5): employee -- complaint.
+    %% Wording differences: none.
     C001 -- C007
+
+    %% Association (Classes Excel terms where available): employee -- message
+    %% Associations Excel (Sheet1!E6:F6): employee -- message.
+    %% Wording differences: none.
     C001 -- C004
+
+    %% Association (Classes Excel terms where available): employee -- salary statement
+    %% Associations Excel (Sheet1!E7:F7): employee -- salary statement.
+    %% Wording differences: none.
     C001 -- C008
-    C001 -- C010
-    C001 -- C011
-    C012 -- C008
+
+    %% Association (Classes Excel terms where available): employee -- contracts
+    %% Associations Excel (Sheet1!E8:F8): employee -- contract.
+    %% Assumption: "contract" -> "contracts" (singular/plural forms are assumed interchangeable).
+    C001 -- C005
+
+    %% Association (Classes Excel terms where available): employee -- certificates
+    %% Associations Excel (Sheet1!E9:F9): employee -- certificate.
+    %% Assumption: "certificate" -> "certificates" (singular/plural forms are assumed interchangeable).
+    C001 -- C006
+
+    %% Association (Classes Excel terms where available): payments -- salary statement
+    %% Associations Excel (Sheet1!E10:F10): payment -- salary statement.
+    %% Assumption: "payment" -> "payments" (singular/plural forms are assumed interchangeable).
+    C002 -- C008

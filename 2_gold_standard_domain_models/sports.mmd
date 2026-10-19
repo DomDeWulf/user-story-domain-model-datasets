@@ -1,9 +1,10 @@
 classDiagram
     %% Project: Sports
-    %% Labels and association rows are preserved exactly from the original workbooks.
-    %% associationOnly marks endpoints absent from the gold-standard class list.
-    %% These additional nodes are not gold-standard classes.
-    %% No direction, multiplicity, attributes, or methods are inferred.
+    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
+    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
+    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
+    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["rooms"]
     class C002["subscription"]
     class C003["schedule"]
@@ -17,27 +18,70 @@ classDiagram
     class C011["booking"]
     class C012["spots"]
     class C013["person"]
-    class C014["room"]
+    class C014["Payment information"]
     <<associationOnly>> C014
-    class C015["lesson"]
-    <<associationOnly>> C015
-    class C016["Payment information"]
-    <<associationOnly>> C016
-    class C017["training session"]
-    <<associationOnly>> C017
-    class C018["book"]
-    <<associationOnly>> C018
-    class C019["spot"]
-    <<associationOnly>> C019
-    C014 -- C015
-    C003 -- C015
+
+    %% Association (Classes Excel terms where available): rooms -- lessons
+    %% Associations Excel (Sheet1!M3:N3): room -- lesson.
+    %% Assumption: "room" -> "rooms" (singular/plural forms are assumed interchangeable).
+    %% Assumption: "lesson" -> "lessons" (singular/plural forms are assumed interchangeable).
+    C001 -- C004
+
+    %% Association (Classes Excel terms where available): schedule -- lessons
+    %% Associations Excel (Sheet1!M4:N4): schedule -- lesson.
+    %% Assumption: "lesson" -> "lessons" (singular/plural forms are assumed interchangeable).
+    C003 -- C004
+
+    %% Association (Classes Excel terms where available): customer -- subscription
+    %% Associations Excel (Sheet1!M5:N5): customer -- subscription.
+    %% Wording differences: none.
     C009 -- C002
+
+    %% Association (Classes Excel terms where available): membership -- person
+    %% Associations Excel (Sheet1!M6:N6): membership -- person.
+    %% Wording differences: none.
     C008 -- C013
+
+    %% Association (Classes Excel terms where available): customer -- membership
+    %% Associations Excel (Sheet1!M7:N7): customer -- membership.
+    %% Wording differences: none.
     C009 -- C008
-    C009 -- C016
+
+    %% Association (Classes Excel terms where available): customer -- Payment information
+    %% Associations Excel (Sheet1!M8:N8): customer -- Payment information.
+    %% Wording differences: none.
+    %% Absent from Classes Excel: "Payment information" is associationOnly; not assumed equivalent to payment: stored banking/payment details may differ from a payment (1_user_stories/sports.txt:3,11).
+    C009 -- C014
+
+    %% Association (Classes Excel terms where available): schedule -- trainer
+    %% Associations Excel (Sheet1!M9:N9): schedule -- trainer.
+    %% Wording differences: none.
     C003 -- C005
-    C017 -- C003
-    C009 -- C018
-    C018 -- C019
-    C018 -- C015
-    C018 -- C017
+
+    %% Association (Classes Excel terms where available): training sessions -- schedule
+    %% Associations Excel (Sheet1!M10:N10): training session -- schedule.
+    %% Assumption: "training session" -> "training sessions" (singular/plural forms are assumed interchangeable).
+    C006 -- C003
+
+    %% Association (Classes Excel terms where available): customer -- booking
+    %% Associations Excel (Sheet1!M11:N11): customer -- book.
+    %% Assumption: "book" -> "booking" (verb/noun interpretation; stories describe booking lessons, training sessions and spots (1_user_stories/sports.txt:18,21,23,56-57)).
+    C009 -- C011
+
+    %% Association (Classes Excel terms where available): booking -- spots
+    %% Associations Excel (Sheet1!M12:N12): book -- spot.
+    %% Assumption: "book" -> "booking" (verb/noun interpretation; stories describe booking lessons, training sessions and spots (1_user_stories/sports.txt:18,21,23,56-57)).
+    %% Assumption: "spot" -> "spots" (singular/plural forms are assumed interchangeable).
+    C011 -- C012
+
+    %% Association (Classes Excel terms where available): booking -- lessons
+    %% Associations Excel (Sheet1!M13:N13): book -- lesson.
+    %% Assumption: "book" -> "booking" (verb/noun interpretation; stories describe booking lessons, training sessions and spots (1_user_stories/sports.txt:18,21,23,56-57)).
+    %% Assumption: "lesson" -> "lessons" (singular/plural forms are assumed interchangeable).
+    C011 -- C004
+
+    %% Association (Classes Excel terms where available): booking -- training sessions
+    %% Associations Excel (Sheet1!M14:N14): book -- training session.
+    %% Assumption: "book" -> "booking" (verb/noun interpretation; stories describe booking lessons, training sessions and spots (1_user_stories/sports.txt:18,21,23,56-57)).
+    %% Assumption: "training session" -> "training sessions" (singular/plural forms are assumed interchangeable).
+    C011 -- C006

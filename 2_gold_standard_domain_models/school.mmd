@@ -1,9 +1,10 @@
 classDiagram
     %% Project: School
-    %% Labels and association rows are preserved exactly from the original workbooks.
-    %% associationOnly marks endpoints absent from the gold-standard class list.
-    %% These additional nodes are not gold-standard classes.
-    %% No direction, multiplicity, attributes, or methods are inferred.
+    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
+    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
+    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
+    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["submission"]
     class C002["assignment"]
     class C003["behavior"]
@@ -21,26 +22,118 @@ classDiagram
     class C015["teacher"]
     class C016["class"]
     class C017["timetable"]
+
+    %% Association (Classes Excel terms where available): question -- answer
+    %% Associations Excel (Sheet1!K3:L3): question -- answer.
+    %% Wording differences: none.
     C010 -- C011
+
+    %% Association (Classes Excel terms where available): question -- digital learning modules
+    %% Associations Excel (Sheet1!K4:L4): question -- digital learning modules.
+    %% Wording differences: none.
     C010 -- C007
+
+    %% Association (Classes Excel terms where available): digital learning modules -- material
+    %% Associations Excel (Sheet1!K5:L5): digital learning modules -- material.
+    %% Wording differences: none.
     C007 -- C012
+
+    %% Association (Classes Excel terms where available): digital learning modules -- class
+    %% Associations Excel (Sheet1!K6:L6): digital learning modules -- class.
+    %% Wording differences: none.
     C007 -- C016
+
+    %% Association (Classes Excel terms where available): class -- assignment
+    %% Associations Excel (Sheet1!K7:L7): class -- assignment.
+    %% Wording differences: none.
     C016 -- C002
+
+    %% Association (Classes Excel terms where available): class -- student
+    %% Associations Excel (Sheet1!K8:L8): class -- student.
+    %% Wording differences: none.
     C016 -- C013
+
+    %% Association (Classes Excel terms where available): student -- timetable
+    %% Associations Excel (Sheet1!K9:L9): student -- timetable.
+    %% Wording differences: none.
     C013 -- C017
+
+    %% Association (Classes Excel terms where available): timetable -- teacher
+    %% Associations Excel (Sheet1!K10:L10): timetable -- teacher.
+    %% Wording differences: none.
     C017 -- C015
+
+    %% Association (Classes Excel terms where available): teacher -- disciplinary actions
+    %% Associations Excel (Sheet1!K11:L11): teacher -- disciplinary actions.
+    %% Wording differences: none.
     C015 -- C004
+
+    %% Association (Classes Excel terms where available): teacher -- behavior
+    %% Associations Excel (Sheet1!K12:L12): teacher -- behavior.
+    %% Wording differences: none.
     C015 -- C003
+
+    %% Association (Classes Excel terms where available): teacher -- message
+    %% Associations Excel (Sheet1!K13:L13): teacher -- message.
+    %% Wording differences: none.
     C015 -- C009
+
+    %% Association (Classes Excel terms where available): behavior -- student
+    %% Associations Excel (Sheet1!K14:L14): behavior -- student.
+    %% Wording differences: none.
     C003 -- C013
+
+    %% Association (Classes Excel terms where available): student -- disciplinary actions
+    %% Associations Excel (Sheet1!K15:L15): student -- disciplinary actions.
+    %% Wording differences: none.
     C013 -- C004
+
+    %% Association (Classes Excel terms where available): student -- message
+    %% Associations Excel (Sheet1!K16:L16): student -- message.
+    %% Wording differences: none.
     C013 -- C009
+
+    %% Association (Classes Excel terms where available): student -- mentor
+    %% Associations Excel (Sheet1!K17:L17): student -- mentor.
+    %% Wording differences: none.
     C013 -- C005
+
+    %% Association (Classes Excel terms where available): student -- guardian
+    %% Associations Excel (Sheet1!K18:L18): student -- guardian.
+    %% Wording differences: none.
     C013 -- C008
+
+    %% Association (Classes Excel terms where available): guardian -- behavior
+    %% Associations Excel (Sheet1!K19:L19): guardian -- behavior.
+    %% Wording differences: none.
     C008 -- C003
+
+    %% Association (Classes Excel terms where available): student -- submission
+    %% Associations Excel (Sheet1!K20:L20): student -- submission.
+    %% Wording differences: none.
     C013 -- C001
+
+    %% Association (Classes Excel terms where available): submission -- grades
+    %% Associations Excel (Sheet1!K21:L21): submission -- grades.
+    %% Wording differences: none.
     C001 -- C014
+
+    %% Association (Classes Excel terms where available): submission -- assignment
+    %% Associations Excel (Sheet1!K22:L22): submission -- assignment.
+    %% Wording differences: none.
     C001 -- C002
+
+    %% Association (Classes Excel terms where available): message -- administrator
+    %% Associations Excel (Sheet1!K23:L23): message -- administrator.
+    %% Wording differences: none.
     C009 -- C006
+
+    %% Association (Classes Excel terms where available): message -- guardian
+    %% Associations Excel (Sheet1!K24:L24): message -- guardian.
+    %% Wording differences: none.
     C009 -- C008
+
+    %% Association (Classes Excel terms where available): message -- mentor
+    %% Associations Excel (Sheet1!K25:L25): message -- mentor.
+    %% Wording differences: none.
     C009 -- C005

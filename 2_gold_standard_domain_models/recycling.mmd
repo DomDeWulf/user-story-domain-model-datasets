@@ -1,9 +1,10 @@
 classDiagram
     %% Project: Recycling
-    %% Labels and association rows are preserved exactly from the original workbooks.
-    %% associationOnly marks endpoints absent from the gold-standard class list.
-    %% These additional nodes are not gold-standard classes.
-    %% No direction, multiplicity, attributes, or methods are inferred.
+    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
+    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
+    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
+    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["questions"]
     class C002["user"]
     class C003["feedback"]
@@ -13,15 +14,33 @@ classDiagram
     class C007["safe disposal events"]
     class C008["schedule"]
     class C009["recycling facilities"]
-    class C010["question"]
-    <<associationOnly>> C010
-    class C011["complaint"]
-    <<associationOnly>> C011
-    class C012["recycling facility"]
-    <<associationOnly>> C012
-    C002 -- C010
+
+    %% Association (Classes Excel terms where available): user -- questions
+    %% Associations Excel (Sheet1!I3:J3): user -- question.
+    %% Assumption: "question" -> "questions" (singular/plural forms are assumed interchangeable).
+    C002 -- C001
+
+    %% Association (Classes Excel terms where available): user -- feedback
+    %% Associations Excel (Sheet1!I4:J4): user -- feedback.
+    %% Wording differences: none.
     C002 -- C003
-    C002 -- C011
-    C012 -- C006
-    C012 -- C008
+
+    %% Association (Classes Excel terms where available): user -- complaints
+    %% Associations Excel (Sheet1!I5:J5): user -- complaint.
+    %% Assumption: "complaint" -> "complaints" (singular/plural forms are assumed interchangeable).
+    C002 -- C004
+
+    %% Association (Classes Excel terms where available): recycling facilities -- recyclable waste
+    %% Associations Excel (Sheet1!I6:J6): recycling facility -- recyclable waste.
+    %% Assumption: "recycling facility" -> "recycling facilities" (singular/plural forms are assumed interchangeable).
+    C009 -- C006
+
+    %% Association (Classes Excel terms where available): recycling facilities -- schedule
+    %% Associations Excel (Sheet1!I7:J7): recycling facility -- schedule.
+    %% Assumption: "recycling facility" -> "recycling facilities" (singular/plural forms are assumed interchangeable).
+    C009 -- C008
+
+    %% Association (Classes Excel terms where available): user -- schedule
+    %% Associations Excel (Sheet1!I8:J8): user -- schedule.
+    %% Wording differences: none.
     C002 -- C008

@@ -1,9 +1,10 @@
 classDiagram
     %% Project: Camperplus
-    %% Labels and association rows are preserved exactly from the original workbooks.
-    %% associationOnly marks endpoints absent from the gold-standard class list.
-    %% These additional nodes are not gold-standard classes.
-    %% No direction, multiplicity, attributes, or methods are inferred.
+    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
+    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
+    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
+    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["payments"]
     class C002["rules"]
     class C003["camp worker"]
@@ -21,44 +22,122 @@ classDiagram
     class C015["supplies"]
     class C016["camp group"]
     class C017["counselor"]
-    class C018["parentguardian"]
-    <<associationOnly>> C018
-    class C019["form"]
-    <<associationOnly>> C019
-    class C020["group"]
-    <<associationOnly>> C020
-    class C021["rule"]
-    <<associationOnly>> C021
-    class C022["schedule"]
-    <<associationOnly>> C022
-    class C023["photo"]
-    <<associationOnly>> C023
-    class C024["facility"]
-    <<associationOnly>> C024
-    class C025["activity"]
-    <<associationOnly>> C025
-    class C026["payment"]
-    <<associationOnly>> C026
-    C008 -- C018
-    C008 -- C019
+
+    %% Association (Classes Excel terms where available): camper -- parentguardians
+    %% Associations Excel (Sheet1!A3:B3): camper -- parentguardian.
+    %% Assumption: "parentguardian" -> "parentguardians" (singular/plural forms are assumed interchangeable).
+    C008 -- C009
+
+    %% Association (Classes Excel terms where available): camper -- forms
+    %% Associations Excel (Sheet1!A4:B4): camper -- form.
+    %% Assumption: "form" -> "forms" (singular/plural forms are assumed interchangeable).
+    C008 -- C014
+
+    %% Association (Classes Excel terms where available): camper -- attendance
+    %% Associations Excel (Sheet1!A5:B5): camper -- attendance.
+    %% Wording differences: none.
     C008 -- C004
-    C012 -- C020
-    C012 -- C021
-    C007 -- C018
-    C020 -- C022
-    C008 -- C023
-    C008 -- C020
-    C024 -- C025
-    C020 -- C025
+
+    %% Association (Classes Excel terms where available): camp -- camp group
+    %% Associations Excel (Sheet1!A6:B6): camp -- group.
+    %% Assumption: "group" -> "camp group" (shortened term; user explicitly equates group with camper group; the Classes Excel spelling is camp group).
+    C012 -- C016
+
+    %% Association (Classes Excel terms where available): camp -- rules
+    %% Associations Excel (Sheet1!A7:B7): camp -- rule.
+    %% Assumption: "rule" -> "rules" (singular/plural forms are assumed interchangeable).
+    C012 -- C002
+
+    %% Association (Classes Excel terms where available): feedback -- parentguardians
+    %% Associations Excel (Sheet1!A8:B8): feedback -- parentguardian.
+    %% Assumption: "parentguardian" -> "parentguardians" (singular/plural forms are assumed interchangeable).
+    C007 -- C009
+
+    %% Association (Classes Excel terms where available): camp group -- schedules
+    %% Associations Excel (Sheet1!A9:B9): group -- schedule.
+    %% Assumption: "group" -> "camp group" (shortened term; user explicitly equates group with camper group; the Classes Excel spelling is camp group).
+    %% Assumption: "schedule" -> "schedules" (singular/plural forms are assumed interchangeable).
+    C016 -- C010
+
+    %% Association (Classes Excel terms where available): camper -- photos
+    %% Associations Excel (Sheet1!A10:B10): camper -- photo.
+    %% Assumption: "photo" -> "photos" (singular/plural forms are assumed interchangeable).
+    C008 -- C006
+
+    %% Association (Classes Excel terms where available): camper -- camp group
+    %% Associations Excel (Sheet1!A11:B11): camper -- group.
+    %% Assumption: "group" -> "camp group" (shortened term; user explicitly equates group with camper group; the Classes Excel spelling is camp group).
+    C008 -- C016
+
+    %% Association (Classes Excel terms where available): facilities -- activities
+    %% Associations Excel (Sheet1!A12:B12): facility -- activity.
+    %% Assumption: "facility" -> "facilities" (singular/plural forms are assumed interchangeable).
+    %% Assumption: "activity" -> "activities" (singular/plural forms are assumed interchangeable).
+    C005 -- C011
+
+    %% Association (Classes Excel terms where available): camp group -- activities
+    %% Associations Excel (Sheet1!A13:B13): group -- activity.
+    %% Assumption: "group" -> "camp group" (shortened term; user explicitly equates group with camper group; the Classes Excel spelling is camp group).
+    %% Assumption: "activity" -> "activities" (singular/plural forms are assumed interchangeable).
+    C016 -- C011
+
+    %% Association (Classes Excel terms where available): camper -- camp
+    %% Associations Excel (Sheet1!A14:B14): camper -- camp.
+    %% Wording differences: none.
     C008 -- C012
-    C012 -- C024
+
+    %% Association (Classes Excel terms where available): camp -- facilities
+    %% Associations Excel (Sheet1!A15:B15): camp -- facility.
+    %% Assumption: "facility" -> "facilities" (singular/plural forms are assumed interchangeable).
+    C012 -- C005
+
+    %% Association (Classes Excel terms where available): supplies -- camp
+    %% Associations Excel (Sheet1!A16:B16): supplies -- camp.
+    %% Wording differences: none.
     C015 -- C012
-    C020 -- C017
-    C025 -- C022
+
+    %% Association (Classes Excel terms where available): camp group -- counselor
+    %% Associations Excel (Sheet1!A17:B17): group -- counselor.
+    %% Assumption: "group" -> "camp group" (shortened term; user explicitly equates group with camper group; the Classes Excel spelling is camp group).
+    C016 -- C017
+
+    %% Association (Classes Excel terms where available): activities -- schedules
+    %% Associations Excel (Sheet1!A18:B18): activity -- schedule.
+    %% Assumption: "activity" -> "activities" (singular/plural forms are assumed interchangeable).
+    %% Assumption: "schedule" -> "schedules" (singular/plural forms are assumed interchangeable).
+    C011 -- C010
+
+    %% Association (Classes Excel terms where available): positions -- camp worker
+    %% Associations Excel (Sheet1!A19:B19): positions -- camp worker.
+    %% Wording differences: none.
     C013 -- C003
+
+    %% Association (Classes Excel terms where available): camp -- camp worker
+    %% Associations Excel (Sheet1!A20:B20): camp -- camp worker.
+    %% Wording differences: none.
     C012 -- C003
-    C012 -- C025
-    C008 -- C026
+
+    %% Association (Classes Excel terms where available): camp -- activities
+    %% Associations Excel (Sheet1!A21:B21): camp -- activity.
+    %% Assumption: "activity" -> "activities" (singular/plural forms are assumed interchangeable).
+    C012 -- C011
+
+    %% Association (Classes Excel terms where available): camper -- payments
+    %% Associations Excel (Sheet1!A22:B22): camper -- payment.
+    %% Assumption: "payment" -> "payments" (singular/plural forms are assumed interchangeable).
+    C008 -- C001
+
+    %% Association (Classes Excel terms where available): feedback -- camper
+    %% Associations Excel (Sheet1!A23:B23): feedback -- camper.
+    %% Wording differences: none.
     C007 -- C008
+
+    %% Association (Classes Excel terms where available): positions -- activities
+    %% Associations Excel (Sheet1!A24:B24): positions -- activities.
+    %% Wording differences: none.
     C013 -- C011
+
+    %% Association (Classes Excel terms where available): photos -- camp
+    %% Associations Excel (Sheet1!A25:B25): photos -- camp.
+    %% Wording differences: none.
     C006 -- C012

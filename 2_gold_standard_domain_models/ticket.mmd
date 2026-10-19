@@ -1,9 +1,10 @@
 classDiagram
     %% Project: Ticket
-    %% Labels and association rows are preserved exactly from the original workbooks.
-    %% associationOnly marks endpoints absent from the gold-standard class list.
-    %% These additional nodes are not gold-standard classes.
-    %% No direction, multiplicity, attributes, or methods are inferred.
+    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
+    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
+    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
+    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["user"]
     class C002["artists"]
     class C003["events"]
@@ -15,26 +16,73 @@ classDiagram
     class C009["event types"]
     class C010["orders"]
     <<associationOnly>> C010
-    class C011["order"]
-    <<associationOnly>> C011
-    class C012["event"]
-    <<associationOnly>> C012
-    class C013["artist"]
-    <<associationOnly>> C013
-    class C014["resellers"]
-    <<associationOnly>> C014
-    class C015["tickets"]
-    <<associationOnly>> C015
+
+    %% Association (Classes Excel terms where available): user -- genre
+    %% Associations Excel (Sheet1!Q3:R3): user -- genre.
+    %% Wording differences: none.
     C001 -- C008
+
+    %% Association (Classes Excel terms where available): user -- event types
+    %% Associations Excel (Sheet1!Q4:R4): user -- event types.
+    %% Wording differences: none.
     C001 -- C009
+
+    %% Association (Classes Excel terms where available): orders -- user
+    %% Associations Excel (Sheet1!Q5:R5): orders -- user.
+    %% Wording differences: none.
+    %% Absent from Classes Excel: "orders" is associationOnly; no equivalent class identified; retained to preserve the source association.
     C010 -- C001
+
+    %% Association (Classes Excel terms where available): ticket -- orders
+    %% Associations Excel (Sheet1!Q6:R6): ticket -- orders.
+    %% Wording differences: none.
+    %% Absent from Classes Excel: "orders" is associationOnly; no equivalent class identified; retained to preserve the source association.
     C004 -- C010
-    C011 -- C006
-    C012 -- C009
-    C012 -- C007
-    C012 -- C013
-    C008 -- C012
+
+    %% Association (Classes Excel terms where available): orders -- payment
+    %% Associations Excel (Sheet1!Q7:R7): order -- payment.
+    %% Assumption: "order" -> "orders" (singular/plural forms are assumed interchangeable; neither form is in the Classes Excel; use the first source form orders as the shared associationOnly label).
+    %% Absent from Classes Excel: "orders" is associationOnly; no equivalent class identified; retained to preserve the source association.
+    C010 -- C006
+
+    %% Association (Classes Excel terms where available): events -- event types
+    %% Associations Excel (Sheet1!Q8:R8): event -- event types.
+    %% Assumption: "event" -> "events" (singular/plural forms are assumed interchangeable).
+    C003 -- C009
+
+    %% Association (Classes Excel terms where available): events -- venue
+    %% Associations Excel (Sheet1!Q9:R9): event -- venue.
+    %% Assumption: "event" -> "events" (singular/plural forms are assumed interchangeable).
+    C003 -- C007
+
+    %% Association (Classes Excel terms where available): events -- artists
+    %% Associations Excel (Sheet1!Q10:R10): event -- artist.
+    %% Assumption: "event" -> "events" (singular/plural forms are assumed interchangeable).
+    %% Assumption: "artist" -> "artists" (singular/plural forms are assumed interchangeable).
+    C003 -- C002
+
+    %% Association (Classes Excel terms where available): genre -- events
+    %% Associations Excel (Sheet1!Q11:R11): genre -- event.
+    %% Assumption: "event" -> "events" (singular/plural forms are assumed interchangeable).
+    C008 -- C003
+
+    %% Association (Classes Excel terms where available): artists -- user
+    %% Associations Excel (Sheet1!Q12:R12): artists -- user.
+    %% Wording differences: none.
     C002 -- C001
-    C014 -- C015
+
+    %% Association (Classes Excel terms where available): reseller -- ticket
+    %% Associations Excel (Sheet1!Q13:R13): resellers -- tickets.
+    %% Assumption: "resellers" -> "reseller" (singular/plural forms are assumed interchangeable).
+    %% Assumption: "tickets" -> "ticket" (singular/plural forms are assumed interchangeable).
+    C005 -- C004
+
+    %% Association (Classes Excel terms where available): events -- ticket
+    %% Associations Excel (Sheet1!Q14:R14): events -- ticket.
+    %% Wording differences: none.
     C003 -- C004
+
+    %% Association (Classes Excel terms where available): events -- user
+    %% Associations Excel (Sheet1!Q15:R15): events -- user.
+    %% Wording differences: none.
     C003 -- C001

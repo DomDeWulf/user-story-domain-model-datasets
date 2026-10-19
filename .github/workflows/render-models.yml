@@ -1,0 +1,44 @@
+name: Render domain models
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '2_gold_standard_domain_models/*.mmd'
+      - 'scripts/render_models.py'
+      - '.github/workflows/render-models.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-domain-models
+  cancel-in-progress: false
+
+jobs:
+  render:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Render and validate SVG diagrams
+        run: |
+          python3 scripts/render_models.py
+          python3 scripts/render_models.py --check
+
+      - name: Commit updated SVG diagrams
+        run: |
+          git add -- '3_visualizations/*.svg'
+          if git diff --cached --quiet; then
+            echo "No SVG changes to commit."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "Regenerate domain-model SVG diagrams"
+          git push origin HEAD:main

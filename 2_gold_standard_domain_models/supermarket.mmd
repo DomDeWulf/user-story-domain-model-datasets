@@ -1,9 +1,10 @@
 classDiagram
     %% Project: Supermarket
-    %% Labels and association rows are preserved exactly from the original workbooks.
-    %% associationOnly marks endpoints absent from the gold-standard class list.
-    %% These additional nodes are not gold-standard classes.
-    %% No direction, multiplicity, attributes, or methods are inferred.
+    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
+    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
+    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
+    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["recipes"]
     class C002["newsletter"]
     class C003["order"]
@@ -15,24 +16,72 @@ classDiagram
     class C009["store"]
     class C010["special personal discounts"]
     class C011["loyalty card"]
-    class C012["product"]
+    class C012["delivery service"]
     <<associationOnly>> C012
-    class C013["recipe"]
-    <<associationOnly>> C013
-    class C014["delivery service"]
-    <<associationOnly>> C014
-    class C015["personal discount"]
-    <<associationOnly>> C015
+
+    %% Association (Classes Excel terms where available): customer -- newsletter
+    %% Associations Excel (Sheet1!O3:P3): customer -- newsletter.
+    %% Wording differences: none.
     C005 -- C002
+
+    %% Association (Classes Excel terms where available): customer -- wishlist
+    %% Associations Excel (Sheet1!O4:P4): customer -- wishlist.
+    %% Wording differences: none.
     C005 -- C006
+
+    %% Association (Classes Excel terms where available): customer -- shopping list
+    %% Associations Excel (Sheet1!O5:P5): customer -- shopping list.
+    %% Wording differences: none.
     C005 -- C007
-    C003 -- C012
+
+    %% Association (Classes Excel terms where available): order -- products
+    %% Associations Excel (Sheet1!O6:P6): order -- product.
+    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    C003 -- C004
+
+    %% Association (Classes Excel terms where available): customer -- order
+    %% Associations Excel (Sheet1!O7:P7): customer -- order.
+    %% Wording differences: none.
     C005 -- C003
-    C009 -- C012
-    C007 -- C012
-    C006 -- C012
+
+    %% Association (Classes Excel terms where available): store -- products
+    %% Associations Excel (Sheet1!O8:P8): store -- product.
+    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    C009 -- C004
+
+    %% Association (Classes Excel terms where available): shopping list -- products
+    %% Associations Excel (Sheet1!O9:P9): shopping list -- product.
+    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    C007 -- C004
+
+    %% Association (Classes Excel terms where available): wishlist -- products
+    %% Associations Excel (Sheet1!O10:P10): wishlist -- product.
+    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    C006 -- C004
+
+    %% Association (Classes Excel terms where available): customer -- store
+    %% Associations Excel (Sheet1!O11:P11): customer -- store.
+    %% Wording differences: none.
     C005 -- C009
-    C013 -- C012
-    C005 -- C014
-    C005 -- C015
+
+    %% Association (Classes Excel terms where available): recipes -- products
+    %% Associations Excel (Sheet1!O12:P12): recipe -- product.
+    %% Assumption: "recipe" -> "recipes" (singular/plural forms are assumed interchangeable).
+    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    C001 -- C004
+
+    %% Association (Classes Excel terms where available): customer -- delivery service
+    %% Associations Excel (Sheet1!O13:P13): customer -- delivery service.
+    %% Wording differences: none.
+    %% Absent from Classes Excel: "delivery service" is associationOnly; not assumed equivalent to delivery: the stories distinguish a subscription-based service from individual deliveries (1_user_stories/supermarket.txt:13,33-36,47-51).
+    C005 -- C012
+
+    %% Association (Classes Excel terms where available): customer -- special personal discounts
+    %% Associations Excel (Sheet1!O14:P14): customer -- personal discount.
+    %% Assumption: "personal discount" -> "special personal discounts" (omitted qualifier plus singular/plural; stories explicitly call these special personal discounts (1_user_stories/supermarket.txt:11-12)).
+    C005 -- C010
+
+    %% Association (Classes Excel terms where available): customer -- loyalty card
+    %% Associations Excel (Sheet1!O15:P15): customer -- loyalty card.
+    %% Wording differences: none.
     C005 -- C011
