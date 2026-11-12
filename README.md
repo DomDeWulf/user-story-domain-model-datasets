@@ -10,7 +10,7 @@ Curated thesis dataset from **“Leveraging machines to derive domain models fro
 
 ```text
 1_user_stories/                    # Nine project text files, UTF-8
-2_gold_standard_domain_models/     # Nine Mermaid class diagrams (.mmd) only
+2_gold_standard_domain_models/     # Nine Mermaid class diagrams (.mmd), revised gold standard
 3_visualizations/                  # Rendered SVG diagrams and visual gallery
 scripts/render_models.py           # Regenerate or validate the diagrams
 scripts/LICENSE                    # MIT license for scripts
@@ -27,9 +27,9 @@ The `original_data/` directory has been removed from this repository. The origin
 
 The curated story files preserve wording, order, and blank lines. Only encoding and line endings were standardized to UTF-8 without a BOM and LF. Planningpoker was decoded from Windows-1252; the other source files were UTF-8.
 
-Each Mermaid file combines the corresponding class list and association rows from the two original gold-standard workbooks. Class labels and capitalization are preserved exactly. Association endpoints use those class terms where a justified equivalent exists; singular/plural forms are treated as interchangeable. Every association has `%%` comments giving its name in class terms, the original association wording and Excel cell range, and any mapping assumptions. Comments are visible in the Mermaid source, not the rendered SVG. An undirected `--` line represents each source association row; no relationship names, multiplicities, inheritance, attributes, or methods are inferred. Classes without associations remain present.
+The Mermaid files are built from a revised gold standard, `Gold&Silver Standard.xlsx`, which replaces the two original gold-standard workbooks as the source of the models. Its class sheet, association sheet, and non-punish list are combined per project. Class labels and capitalization are preserved exactly. The association sheet stores endpoints as truncated word stems (for example, `('employe', 'schedul')`); each is mapped to the class label it abbreviates, and singular/plural forms are treated as interchangeable. Every association has `%%` comments giving its name in class terms, the workbook wording and cell, any mapping assumptions, and its status. Comments are visible in the Mermaid source, not the rendered SVG. An undirected line represents each association row; no relationship names, multiplicities, inheritance, attributes, or methods are inferred. Classes without associations remain present.
 
-**Source inconsistencies:** endpoints with no justified equivalent in the class list (for example, `cashier`) remain nodes marked `<<associationOnly>>` and are **not additional gold-standard classes**. Exclude marked nodes when evaluating class extraction. The [assumptions record](docs/model-assumptions.md) lists every wording mapping, the reasoning for non-plural interpretations, and unresolved ambiguities. The original workbooks remain authoritative.
+**Required, optional, and removed elements:** the revised workbook marks elements as removed (red), optional (green), or added (blue text). Removed classes and associations are omitted and listed in each model's header comments. Optional classes carry the `<<optional>>` stereotype, and optional associations are drawn as dashed `..` lines; all other elements are required. The non-punish list names subclasses that should not count as false positives in class evaluation. The [assumptions record](docs/model-assumptions.md) lists every interpretive mapping, the workbook irregularities, the changes from the previous models, and the non-punish groups.
 
 Open `.mmd` files in a Mermaid-compatible viewer, or paste their contents into a fenced `mermaid` code block.
 
@@ -37,7 +37,7 @@ Open `.mmd` files in a Mermaid-compatible viewer, or paste their contents into a
 
 [View all nine domain-model diagrams](3_visualizations/README.md). The SVG files can also be opened directly in a browser and enlarged without losing quality. The gallery uses local images and works offline.
 
-After changing a Mermaid file, regenerate the SVGs with `python3 scripts/render_models.py` (Python 3, curl, and internet access required). This sends the public dataset diagrams to [Kroki's Mermaid renderer](https://kroki.io/); use `--endpoint URL` for a self-hosted Kroki instance. Renderer updates may change the layout. Run `python3 scripts/render_models.py --check` to check SVG node and association counts against the sources without network access.
+After changing a Mermaid file, regenerate the SVGs with `python3 scripts/render_models.py` (Python 3, curl, and internet access required). This sends the public dataset diagrams to [Kroki's Mermaid renderer](https://kroki.io/); use `--endpoint URL` for a self-hosted Kroki instance. Renderer updates may change the layout. Run `python3 scripts/render_models.py --check` to check SVG node and association counts (solid and dashed) against the sources without network access.
 
 ### Automatic rendering on GitHub
 

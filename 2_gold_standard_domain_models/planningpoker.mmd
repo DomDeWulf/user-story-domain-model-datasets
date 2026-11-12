@@ -1,9 +1,11 @@
 classDiagram
     %% Project: Planningpoker
-    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
-    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
-    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
-    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% Source: Gold&Silver Standard.xlsx, sheets 'Class - Gold Standard' (column D) and 'Association - Gold Standard' (columns G:H).
+    %% Class labels match the revised class list exactly, including capitalization.
+    %% Class IDs and order follow the previous models; new classes are appended and removed classes leave ID gaps.
+    %% Workbook legend: red fill = removed, green fill = optional, blue text = added.
+    %% Removed classes and associations are omitted. Optional classes carry <<optional>>; optional associations use a dashed .. line.
+    %% Association endpoints are mapped to class labels; every changed endpoint is documented below.
     %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["estimators"]
     class C002["round"]
@@ -12,32 +14,32 @@ classDiagram
     class C005["estimate"]
     class C006["card"]
 
-    %% Association (Classes Excel terms where available): game -- round
-    %% Associations Excel (Sheet1!G3:H3): game -- round.
-    %% Wording differences: none.
+    %% Association: game -- round
+    %% Workbook ('Association - Gold Standard'!G3): game -- round.
+    %% Mapping: none.
     C003 -- C002
 
-    %% Association (Classes Excel terms where available): estimate -- item
-    %% Associations Excel (Sheet1!G4:H4): estimate -- item.
-    %% Wording differences: none.
+    %% Association: estimate -- item
+    %% Workbook ('Association - Gold Standard'!G4): estim -- item.
+    %% Mapping: "estim" -> "estimate" (truncated stem; "estim" read as estimate here, as in the previous models).
     C005 -- C004
 
-    %% Association (Classes Excel terms where available): item -- round
-    %% Associations Excel (Sheet1!G5:H5): item -- round.
-    %% Wording differences: none.
+    %% Association: item -- round
+    %% Workbook ('Association - Gold Standard'!G5): item -- round.
+    %% Mapping: none.
     C004 -- C002
 
-    %% Association (Classes Excel terms where available): game -- estimators
-    %% Associations Excel (Sheet1!G6:H6): game -- estimator.
-    %% Assumption: "estimator" -> "estimators" (singular/plural forms are assumed interchangeable).
+    %% Association: game -- estimators
+    %% Workbook ('Association - Gold Standard'!G6): game -- estim.
+    %% Mapping: "estim" -> "estimators" (truncated stem; singular/plural).
     C003 -- C001
 
-    %% Association (Classes Excel terms where available): estimators -- estimate
-    %% Associations Excel (Sheet1!G7:H7): estimator -- estimate.
-    %% Assumption: "estimator" -> "estimators" (singular/plural forms are assumed interchangeable).
+    %% Association: estimators -- estimate
+    %% Workbook ('Association - Gold Standard'!G7): estim -- estim.
+    %% Mapping: "estim" -> "estimators" (truncated stem; singular/plural); "estim" -> "estimate" (truncated stem; "estim" read as estimate here, as in the previous models).
     C001 -- C005
 
-    %% Association (Classes Excel terms where available): game -- card
-    %% Associations Excel (Sheet1!G8:H8): game -- card.
-    %% Wording differences: none.
+    %% Association: game -- card
+    %% Workbook ('Association - Gold Standard'!G8): game -- card.
+    %% Mapping: none.
     C003 -- C006

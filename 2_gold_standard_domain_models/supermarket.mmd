@@ -1,9 +1,11 @@
 classDiagram
     %% Project: Supermarket
-    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
-    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
-    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
-    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% Source: Gold&Silver Standard.xlsx, sheets 'Class - Gold Standard' (column H) and 'Association - Gold Standard' (columns O:P).
+    %% Class labels match the revised class list exactly, including capitalization.
+    %% Class IDs and order follow the previous models; new classes are appended and removed classes leave ID gaps.
+    %% Workbook legend: red fill = removed, green fill = optional, blue text = added.
+    %% Removed classes and associations are omitted. Optional classes carry <<optional>>; optional associations use a dashed .. line.
+    %% Association endpoints are mapped to class labels; every changed endpoint is documented below.
     %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["recipes"]
     class C002["newsletter"]
@@ -14,74 +16,92 @@ classDiagram
     class C007["shopping list"]
     class C008["delivery"]
     class C009["store"]
-    class C010["special personal discounts"]
+    class C010["personal discount"]
     class C011["loyalty card"]
-    class C012["delivery service"]
-    <<associationOnly>> C012
+    %% Class 'Class - Gold Standard'!H13: added in the revised workbook (blue text); optional (green fill).
+    class C013["payment"]
+    <<optional>> C013
 
-    %% Association (Classes Excel terms where available): customer -- newsletter
-    %% Associations Excel (Sheet1!O3:P3): customer -- newsletter.
-    %% Wording differences: none.
+    %% Association: customer -- newsletter
+    %% Workbook ('Association - Gold Standard'!O3): custom -- newslett.
+    %% Mapping: "custom" -> "customer" (truncated stem); "newslett" -> "newsletter" (truncated stem).
     C005 -- C002
 
-    %% Association (Classes Excel terms where available): customer -- wishlist
-    %% Associations Excel (Sheet1!O4:P4): customer -- wishlist.
-    %% Wording differences: none.
+    %% Association: customer -- wishlist
+    %% Workbook ('Association - Gold Standard'!O4): custom -- wishlist.
+    %% Mapping: "custom" -> "customer" (truncated stem).
     C005 -- C006
 
-    %% Association (Classes Excel terms where available): customer -- shopping list
-    %% Associations Excel (Sheet1!O5:P5): customer -- shopping list.
-    %% Wording differences: none.
+    %% Association: customer -- shopping list
+    %% Workbook ('Association - Gold Standard'!O5): custom -- shopping list.
+    %% Mapping: "custom" -> "customer" (truncated stem).
     C005 -- C007
 
-    %% Association (Classes Excel terms where available): order -- products
-    %% Associations Excel (Sheet1!O6:P6): order -- product.
-    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    %% Association: order -- products
+    %% Workbook ('Association - Gold Standard'!O6): order -- product.
+    %% Mapping: "product" -> "products" (singular/plural).
     C003 -- C004
 
-    %% Association (Classes Excel terms where available): customer -- order
-    %% Associations Excel (Sheet1!O7:P7): customer -- order.
-    %% Wording differences: none.
+    %% Association: customer -- order
+    %% Workbook ('Association - Gold Standard'!O7): custom -- order.
+    %% Mapping: "custom" -> "customer" (truncated stem).
     C005 -- C003
 
-    %% Association (Classes Excel terms where available): store -- products
-    %% Associations Excel (Sheet1!O8:P8): store -- product.
-    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    %% Association: store -- products
+    %% Workbook ('Association - Gold Standard'!O8): store -- product.
+    %% Mapping: "product" -> "products" (singular/plural).
     C009 -- C004
 
-    %% Association (Classes Excel terms where available): shopping list -- products
-    %% Associations Excel (Sheet1!O9:P9): shopping list -- product.
-    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    %% Association: shopping list -- products
+    %% Workbook ('Association - Gold Standard'!O9): shopping list -- product.
+    %% Mapping: "product" -> "products" (singular/plural).
     C007 -- C004
 
-    %% Association (Classes Excel terms where available): wishlist -- products
-    %% Associations Excel (Sheet1!O10:P10): wishlist -- product.
-    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    %% Association: wishlist -- products
+    %% Workbook ('Association - Gold Standard'!O10): wishlist -- product.
+    %% Mapping: "product" -> "products" (singular/plural).
     C006 -- C004
 
-    %% Association (Classes Excel terms where available): customer -- store
-    %% Associations Excel (Sheet1!O11:P11): customer -- store.
-    %% Wording differences: none.
+    %% Association: customer -- store
+    %% Workbook ('Association - Gold Standard'!O11): custom -- store.
+    %% Mapping: "custom" -> "customer" (truncated stem).
     C005 -- C009
 
-    %% Association (Classes Excel terms where available): recipes -- products
-    %% Associations Excel (Sheet1!O12:P12): recipe -- product.
-    %% Assumption: "recipe" -> "recipes" (singular/plural forms are assumed interchangeable).
-    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    %% Association: recipes -- products
+    %% Workbook ('Association - Gold Standard'!O12): recip -- product.
+    %% Mapping: "recip" -> "recipes" (truncated stem; singular/plural); "product" -> "products" (singular/plural).
     C001 -- C004
 
-    %% Association (Classes Excel terms where available): customer -- delivery service
-    %% Associations Excel (Sheet1!O13:P13): customer -- delivery service.
-    %% Wording differences: none.
-    %% Absent from Classes Excel: "delivery service" is associationOnly; not assumed equivalent to delivery: the stories distinguish a subscription-based service from individual deliveries (1_user_stories/supermarket.txt:13,33-36,47-51).
-    C005 -- C012
+    %% Association: customer -- delivery
+    %% Workbook ('Association - Gold Standard'!O13): custom -- delivery.
+    %% Mapping: "custom" -> "customer" (truncated stem).
+    %% Note: Cell P13 holds an alternative wording, ('custom', 'delivery servic'), i.e. customer -- delivery service. O13 (customer -- delivery) is used because "delivery service" is not in the revised class list.
+    C005 -- C008
 
-    %% Association (Classes Excel terms where available): customer -- special personal discounts
-    %% Associations Excel (Sheet1!O14:P14): customer -- personal discount.
-    %% Assumption: "personal discount" -> "special personal discounts" (omitted qualifier plus singular/plural; stories explicitly call these special personal discounts (1_user_stories/supermarket.txt:11-12)).
+    %% Association: customer -- personal discount
+    %% Workbook ('Association - Gold Standard'!O14): custom -- personal discount.
+    %% Mapping: "custom" -> "customer" (truncated stem).
     C005 -- C010
 
-    %% Association (Classes Excel terms where available): customer -- loyalty card
-    %% Associations Excel (Sheet1!O15:P15): customer -- loyalty card.
-    %% Wording differences: none.
+    %% Association: customer -- loyalty card
+    %% Workbook ('Association - Gold Standard'!O15): custom -- loyalty card.
+    %% Mapping: "custom" -> "customer" (truncated stem).
     C005 -- C011
+
+    %% Association: order -- delivery
+    %% Workbook ('Association - Gold Standard'!O16): order -- delivery.
+    %% Mapping: none.
+    %% Status: added in the revised workbook (blue text); optional (green fill).
+    C003 .. C008
+
+    %% Association: payment -- order
+    %% Workbook ('Association - Gold Standard'!O17): payment -- order.
+    %% Mapping: none.
+    %% Status: added in the revised workbook (blue text); optional (green fill).
+    C013 .. C003
+
+    %% Association: personal discount -- products
+    %% Workbook ('Association - Gold Standard'!O18): discount -- prodcut.
+    %% Mapping: "discount" -> "personal discount" (interpretation: omitted qualifier; the only discount class in the revised class list); "prodcut" -> "products" (typo; singular/plural).
+    %% Status: added in the revised workbook (blue text).
+    C010 -- C004

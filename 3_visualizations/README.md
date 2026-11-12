@@ -2,7 +2,7 @@
 
 [Back to dataset README](../README.md)
 
-Rendered from the Mermaid gold standards. Click an image to open its SVG and zoom in. Class labels match the Classes workbook; association wording is reconciled using the [documented assumptions](../docs/model-assumptions.md). Nodes marked `associationOnly` have no matching gold-standard class. Every association and wording assumption is documented in `%%` comments in the linked Mermaid source; these comments are hidden in the SVG.
+Rendered from the Mermaid gold standards. Click an image to open its SVG and zoom in. Class labels match the revised `Gold&Silver Standard.xlsx` class list; association wording is reconciled using the [documented assumptions](../docs/model-assumptions.md). Optional classes are marked `«optional»` and optional associations are drawn as dashed lines; everything else is required. Every association and wording assumption is documented in `%%` comments in the linked Mermaid source; these comments are hidden in the SVG.
 
 ## Camperplus
 

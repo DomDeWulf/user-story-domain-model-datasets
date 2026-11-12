@@ -1,10 +1,13 @@
 classDiagram
     %% Project: Camperplus
-    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
-    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
-    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
-    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% Source: Gold&Silver Standard.xlsx, sheets 'Class - Gold Standard' (column A) and 'Association - Gold Standard' (columns A:B).
+    %% Class labels match the revised class list exactly, including capitalization.
+    %% Class IDs and order follow the previous models; new classes are appended and removed classes leave ID gaps.
+    %% Workbook legend: red fill = removed, green fill = optional, blue text = added.
+    %% Removed classes and associations are omitted. Optional classes carry <<optional>>; optional associations use a dashed .. line.
+    %% Association endpoints are mapped to class labels; every changed endpoint is documented below.
     %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
+    %% Non-punish group (Class Non-Punish List): form: medicalForm, consentform, registrationForm, consent form, medical form, registration form
     class C001["payments"]
     class C002["rules"]
     class C003["camp worker"]
@@ -13,131 +16,149 @@ classDiagram
     class C006["photos"]
     class C007["feedback"]
     class C008["camper"]
-    class C009["parentguardians"]
+    class C009["guardians"]
     class C010["schedules"]
     class C011["activities"]
     class C012["camp"]
     class C013["positions"]
     class C014["forms"]
     class C015["supplies"]
-    class C016["camp group"]
+    class C016["groups"]
     class C017["counselor"]
+    %% Class 'Class - Gold Standard'!A19: added in the revised workbook (blue text).
+    class C018["behavior"]
+    %% Class 'Class - Gold Standard'!A20: added in the revised workbook (blue text).
+    class C019["repair"]
 
-    %% Association (Classes Excel terms where available): camper -- parentguardians
-    %% Associations Excel (Sheet1!A3:B3): camper -- parentguardian.
-    %% Assumption: "parentguardian" -> "parentguardians" (singular/plural forms are assumed interchangeable).
+    %% Association: camper -- guardians
+    %% Workbook ('Association - Gold Standard'!A3): camper -- guardian.
+    %% Mapping: "guardian" -> "guardians" (singular/plural).
     C008 -- C009
 
-    %% Association (Classes Excel terms where available): camper -- forms
-    %% Associations Excel (Sheet1!A4:B4): camper -- form.
-    %% Assumption: "form" -> "forms" (singular/plural forms are assumed interchangeable).
+    %% Association: camper -- forms
+    %% Workbook ('Association - Gold Standard'!A4): camper -- form.
+    %% Mapping: "form" -> "forms" (singular/plural).
     C008 -- C014
 
-    %% Association (Classes Excel terms where available): camper -- attendance
-    %% Associations Excel (Sheet1!A5:B5): camper -- attendance.
-    %% Wording differences: none.
+    %% Association: camper -- attendance
+    %% Workbook ('Association - Gold Standard'!A5): camper -- attend.
+    %% Mapping: "attend" -> "attendance" (truncated stem).
     C008 -- C004
 
-    %% Association (Classes Excel terms where available): camp -- camp group
-    %% Associations Excel (Sheet1!A6:B6): camp -- group.
-    %% Assumption: "group" -> "camp group" (shortened term; user explicitly equates group with camper group; the Classes Excel spelling is camp group).
+    %% Association: camp -- groups
+    %% Workbook ('Association - Gold Standard'!A6): camp -- group.
+    %% Mapping: "group" -> "groups" (singular/plural).
     C012 -- C016
 
-    %% Association (Classes Excel terms where available): camp -- rules
-    %% Associations Excel (Sheet1!A7:B7): camp -- rule.
-    %% Assumption: "rule" -> "rules" (singular/plural forms are assumed interchangeable).
+    %% Association: camp -- rules
+    %% Workbook ('Association - Gold Standard'!A7): camp -- rule.
+    %% Mapping: "rule" -> "rules" (singular/plural).
     C012 -- C002
 
-    %% Association (Classes Excel terms where available): feedback -- parentguardians
-    %% Associations Excel (Sheet1!A8:B8): feedback -- parentguardian.
-    %% Assumption: "parentguardian" -> "parentguardians" (singular/plural forms are assumed interchangeable).
+    %% Association: feedback -- guardians
+    %% Workbook ('Association - Gold Standard'!A8): feedback -- guardian.
+    %% Mapping: "guardian" -> "guardians" (singular/plural).
     C007 -- C009
 
-    %% Association (Classes Excel terms where available): camp group -- schedules
-    %% Associations Excel (Sheet1!A9:B9): group -- schedule.
-    %% Assumption: "group" -> "camp group" (shortened term; user explicitly equates group with camper group; the Classes Excel spelling is camp group).
-    %% Assumption: "schedule" -> "schedules" (singular/plural forms are assumed interchangeable).
+    %% Association: groups -- schedules
+    %% Workbook ('Association - Gold Standard'!A9): group -- schedul.
+    %% Mapping: "group" -> "groups" (singular/plural); "schedul" -> "schedules" (truncated stem; singular/plural).
     C016 -- C010
 
-    %% Association (Classes Excel terms where available): camper -- photos
-    %% Associations Excel (Sheet1!A10:B10): camper -- photo.
-    %% Assumption: "photo" -> "photos" (singular/plural forms are assumed interchangeable).
+    %% Association: camper -- photos
+    %% Workbook ('Association - Gold Standard'!A10): camper -- photo.
+    %% Mapping: "photo" -> "photos" (singular/plural).
     C008 -- C006
 
-    %% Association (Classes Excel terms where available): camper -- camp group
-    %% Associations Excel (Sheet1!A11:B11): camper -- group.
-    %% Assumption: "group" -> "camp group" (shortened term; user explicitly equates group with camper group; the Classes Excel spelling is camp group).
+    %% Association: camper -- groups
+    %% Workbook ('Association - Gold Standard'!A11): camper -- group.
+    %% Mapping: "group" -> "groups" (singular/plural).
     C008 -- C016
 
-    %% Association (Classes Excel terms where available): facilities -- activities
-    %% Associations Excel (Sheet1!A12:B12): facility -- activity.
-    %% Assumption: "facility" -> "facilities" (singular/plural forms are assumed interchangeable).
-    %% Assumption: "activity" -> "activities" (singular/plural forms are assumed interchangeable).
+    %% Association: facilities -- activities
+    %% Workbook ('Association - Gold Standard'!A12): facil -- activ.
+    %% Mapping: "facil" -> "facilities" (truncated stem; singular/plural); "activ" -> "activities" (truncated stem; singular/plural).
     C005 -- C011
 
-    %% Association (Classes Excel terms where available): camp group -- activities
-    %% Associations Excel (Sheet1!A13:B13): group -- activity.
-    %% Assumption: "group" -> "camp group" (shortened term; user explicitly equates group with camper group; the Classes Excel spelling is camp group).
-    %% Assumption: "activity" -> "activities" (singular/plural forms are assumed interchangeable).
+    %% Association: groups -- activities
+    %% Workbook ('Association - Gold Standard'!A13): group -- activ.
+    %% Mapping: "group" -> "groups" (singular/plural); "activ" -> "activities" (truncated stem; singular/plural).
     C016 -- C011
 
-    %% Association (Classes Excel terms where available): camper -- camp
-    %% Associations Excel (Sheet1!A14:B14): camper -- camp.
-    %% Wording differences: none.
+    %% Association: camper -- camp
+    %% Workbook ('Association - Gold Standard'!A14): camper -- camp.
+    %% Mapping: none.
     C008 -- C012
 
-    %% Association (Classes Excel terms where available): camp -- facilities
-    %% Associations Excel (Sheet1!A15:B15): camp -- facility.
-    %% Assumption: "facility" -> "facilities" (singular/plural forms are assumed interchangeable).
+    %% Association: camp -- facilities
+    %% Workbook ('Association - Gold Standard'!A15): camp -- facil.
+    %% Mapping: "facil" -> "facilities" (truncated stem; singular/plural).
     C012 -- C005
 
-    %% Association (Classes Excel terms where available): supplies -- camp
-    %% Associations Excel (Sheet1!A16:B16): supplies -- camp.
-    %% Wording differences: none.
+    %% Association: supplies -- camp
+    %% Workbook ('Association - Gold Standard'!A16): suppli -- camp.
+    %% Mapping: "suppli" -> "supplies" (truncated stem).
     C015 -- C012
 
-    %% Association (Classes Excel terms where available): camp group -- counselor
-    %% Associations Excel (Sheet1!A17:B17): group -- counselor.
-    %% Assumption: "group" -> "camp group" (shortened term; user explicitly equates group with camper group; the Classes Excel spelling is camp group).
+    %% Association: groups -- counselor
+    %% Workbook ('Association - Gold Standard'!A17): group -- counselor.
+    %% Mapping: "group" -> "groups" (singular/plural).
     C016 -- C017
 
-    %% Association (Classes Excel terms where available): activities -- schedules
-    %% Associations Excel (Sheet1!A18:B18): activity -- schedule.
-    %% Assumption: "activity" -> "activities" (singular/plural forms are assumed interchangeable).
-    %% Assumption: "schedule" -> "schedules" (singular/plural forms are assumed interchangeable).
+    %% Association: activities -- schedules
+    %% Workbook ('Association - Gold Standard'!A18): activ -- schedul.
+    %% Mapping: "activ" -> "activities" (truncated stem; singular/plural); "schedul" -> "schedules" (truncated stem; singular/plural).
     C011 -- C010
 
-    %% Association (Classes Excel terms where available): positions -- camp worker
-    %% Associations Excel (Sheet1!A19:B19): positions -- camp worker.
-    %% Wording differences: none.
+    %% Association: positions -- camp worker
+    %% Workbook ('Association - Gold Standard'!A19): posit -- camp work.
+    %% Mapping: "posit" -> "positions" (truncated stem; singular/plural); "camp work" -> "camp worker" (truncated stem).
     C013 -- C003
 
-    %% Association (Classes Excel terms where available): camp -- camp worker
-    %% Associations Excel (Sheet1!A20:B20): camp -- camp worker.
-    %% Wording differences: none.
+    %% Association: camp -- camp worker
+    %% Workbook ('Association - Gold Standard'!A20): camp -- camp work.
+    %% Mapping: "camp work" -> "camp worker" (truncated stem).
     C012 -- C003
 
-    %% Association (Classes Excel terms where available): camp -- activities
-    %% Associations Excel (Sheet1!A21:B21): camp -- activity.
-    %% Assumption: "activity" -> "activities" (singular/plural forms are assumed interchangeable).
+    %% Association: camp -- activities
+    %% Workbook ('Association - Gold Standard'!A21): camp -- activ.
+    %% Mapping: "activ" -> "activities" (truncated stem; singular/plural).
     C012 -- C011
 
-    %% Association (Classes Excel terms where available): camper -- payments
-    %% Associations Excel (Sheet1!A22:B22): camper -- payment.
-    %% Assumption: "payment" -> "payments" (singular/plural forms are assumed interchangeable).
+    %% Association: camper -- payments
+    %% Workbook ('Association - Gold Standard'!A22): camper -- payment.
+    %% Mapping: "payment" -> "payments" (singular/plural).
     C008 -- C001
 
-    %% Association (Classes Excel terms where available): feedback -- camper
-    %% Associations Excel (Sheet1!A23:B23): feedback -- camper.
-    %% Wording differences: none.
+    %% Association: feedback -- camper
+    %% Workbook ('Association - Gold Standard'!A23): feedback -- camper.
+    %% Mapping: none.
     C007 -- C008
 
-    %% Association (Classes Excel terms where available): positions -- activities
-    %% Associations Excel (Sheet1!A24:B24): positions -- activities.
-    %% Wording differences: none.
+    %% Association: positions -- activities
+    %% Workbook ('Association - Gold Standard'!A24): posit -- activ.
+    %% Mapping: "posit" -> "positions" (truncated stem; singular/plural); "activ" -> "activities" (truncated stem; singular/plural).
     C013 -- C011
 
-    %% Association (Classes Excel terms where available): photos -- camp
-    %% Associations Excel (Sheet1!A25:B25): photos -- camp.
-    %% Wording differences: none.
+    %% Association: photos -- camp
+    %% Workbook ('Association - Gold Standard'!A25): photo -- camp.
+    %% Mapping: "photo" -> "photos" (singular/plural).
     C006 -- C012
+
+    %% Association: groups -- facilities
+    %% Workbook ('Association - Gold Standard'!A26): group -- facility.
+    %% Mapping: "group" -> "groups" (singular/plural); "facility" -> "facilities" (singular/plural).
+    %% Status: added in the revised workbook (blue text).
+    C016 -- C005
+
+    %% Association: camper -- behavior
+    %% Workbook ('Association - Gold Standard'!A27): camper -- behavior.
+    %% Mapping: none.
+    %% Status: added in the revised workbook (blue text).
+    C008 -- C018
+
+    %% Association: guardians -- forms
+    %% Workbook ('Association - Gold Standard'!A28): guardian -- form.
+    %% Mapping: "guardian" -> "guardians" (singular/plural); "form" -> "forms" (singular/plural).
+    %% Status: added in the revised workbook (blue text).
+    C009 -- C014
