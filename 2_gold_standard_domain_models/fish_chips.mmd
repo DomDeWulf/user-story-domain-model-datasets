@@ -1,68 +1,61 @@
 classDiagram
     %% Project: Fish&Chips
-    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
-    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
-    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
-    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% Source: Gold&Silver Standard.xlsx, sheets 'Class - Gold Standard' (column B) and 'Association - Gold Standard' (columns C:D).
+    %% Class labels match the revised class list exactly, including capitalization.
+    %% Class IDs and order follow the previous models; new classes are appended and removed classes leave ID gaps.
+    %% Workbook legend: red fill = removed, green fill = optional, blue text = added.
+    %% Removed classes and associations are omitted. Optional classes carry <<optional>>; optional associations use a dashed .. line.
+    %% Association endpoints are mapped to class labels; every changed endpoint is documented below.
     %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["payment"]
     class C002["products"]
     class C003["orders"]
     class C004["requests"]
-    class C005["payment methods"]
     class C006["customer"]
-    <<associationOnly>> C006
     class C007["coupons"]
-    <<associationOnly>> C007
     class C008["delivery person"]
-    <<associationOnly>> C008
     class C009["cash"]
-    <<associationOnly>> C009
+    %% Class 'Class - Gold Standard'!B9: optional (green fill).
     class C010["cashier"]
-    <<associationOnly>> C010
+    <<optional>> C010
 
-    %% Association (Classes Excel terms where available): orders -- products
-    %% Associations Excel (Sheet1!C3:D3): order -- products.
-    %% Assumption: "order" -> "orders" (singular/plural forms are assumed interchangeable).
+    %% Association: orders -- products
+    %% Workbook ('Association - Gold Standard'!C3): order -- product.
+    %% Mapping: "order" -> "orders" (singular/plural); "product" -> "products" (singular/plural).
     C003 -- C002
 
-    %% Association (Classes Excel terms where available): requests -- products
-    %% Associations Excel (Sheet1!C4:D4): requests -- product.
-    %% Assumption: "product" -> "products" (singular/plural forms are assumed interchangeable).
+    %% Association: requests -- products
+    %% Workbook ('Association - Gold Standard'!C4): request -- product.
+    %% Mapping: "request" -> "requests" (singular/plural); "product" -> "products" (singular/plural).
     C004 -- C002
 
-    %% Association (Classes Excel terms where available): customer -- orders
-    %% Associations Excel (Sheet1!C5:D5): customer -- order.
-    %% Assumption: "order" -> "orders" (singular/plural forms are assumed interchangeable).
-    %% Absent from Classes Excel: "customer" is associationOnly; no equivalent class identified; retained to preserve the source association.
+    %% Association: customer -- orders
+    %% Workbook ('Association - Gold Standard'!C5): custom -- order.
+    %% Mapping: "custom" -> "customer" (truncated stem); "order" -> "orders" (singular/plural).
     C006 -- C003
 
-    %% Association (Classes Excel terms where available): orders -- coupons
-    %% Associations Excel (Sheet1!C6:D6): order -- coupons.
-    %% Assumption: "order" -> "orders" (singular/plural forms are assumed interchangeable).
-    %% Absent from Classes Excel: "coupons" is associationOnly; no equivalent class identified; retained to preserve the source association.
+    %% Association: orders -- coupons
+    %% Workbook ('Association - Gold Standard'!C6): order -- coupon.
+    %% Mapping: "order" -> "orders" (singular/plural); "coupon" -> "coupons" (singular/plural).
     C003 -- C007
 
-    %% Association (Classes Excel terms where available): delivery person -- cash
-    %% Associations Excel (Sheet1!C7:D7): delivery person -- cash.
-    %% Wording differences: none.
-    %% Absent from Classes Excel: "delivery person" is associationOnly; no equivalent class identified; retained to preserve the source association.
-    %% Absent from Classes Excel: "cash" is associationOnly; no equivalent class identified; retained to preserve the source association.
+    %% Association: delivery person -- cash
+    %% Workbook ('Association - Gold Standard'!C7): delivery person -- cash.
+    %% Mapping: none.
     C008 -- C009
 
-    %% Association (Classes Excel terms where available): delivery person -- orders
-    %% Associations Excel (Sheet1!C8:D8): delivery person -- orders.
-    %% Wording differences: none.
-    %% Absent from Classes Excel: "delivery person" is associationOnly; no equivalent class identified; retained to preserve the source association.
+    %% Association: delivery person -- orders
+    %% Workbook ('Association - Gold Standard'!C8): delivery person -- order.
+    %% Mapping: "order" -> "orders" (singular/plural).
     C008 -- C003
 
-    %% Association (Classes Excel terms where available): orders -- payment
-    %% Associations Excel (Sheet1!C9:D9): order -- payment.
-    %% Assumption: "order" -> "orders" (singular/plural forms are assumed interchangeable).
+    %% Association: orders -- payment
+    %% Workbook ('Association - Gold Standard'!C9): order -- payment.
+    %% Mapping: "order" -> "orders" (singular/plural).
     C003 -- C001
 
-    %% Association (Classes Excel terms where available): cashier -- payment
-    %% Associations Excel (Sheet1!C10:D10): cashier -- payment.
-    %% Wording differences: none.
-    %% Absent from Classes Excel: "cashier" is associationOnly; no equivalent class identified; retained to preserve the source association.
-    C010 -- C001
+    %% Association: cashier -- payment
+    %% Workbook ('Association - Gold Standard'!C10): cashier -- payment.
+    %% Mapping: none.
+    %% Status: optional (green fill).
+    C010 .. C001

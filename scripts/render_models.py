@@ -41,7 +41,7 @@ def main():
         # Confirm that Mermaid rendered every declared class and association.
         text = source.read_text(encoding='utf-8')
         expected_nodes = len(re.findall(r'^\s+class C\d+\[', text, re.M))
-        expected_edges = len(re.findall(r'^\s+C\d+ -- C\d+\s*$', text, re.M))
+        expected_edges = len(re.findall(r'^\s+C\d+ (?:--|\.\.) C\d+\s*$', text, re.M))
         actual_nodes = sum('node' in e.attrib.get('class', '').split()
                            and e.tag.endswith('}g') for e in svg.iter())
         actual_edges = sum('relation' in e.attrib.get('class', '').split()

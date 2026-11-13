@@ -1,87 +1,87 @@
 classDiagram
     %% Project: Sports
-    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
-    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
-    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
-    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% Source: Gold&Silver Standard.xlsx, sheets 'Class - Gold Standard' (column G) and 'Association - Gold Standard' (columns M:N).
+    %% Class labels match the revised class list exactly, including capitalization.
+    %% Class IDs and order follow the previous models; new classes are appended and removed classes leave ID gaps.
+    %% Workbook legend: red fill = removed, green fill = optional, blue text = added.
+    %% Removed classes and associations are omitted. Optional classes carry <<optional>>; optional associations use a dashed .. line.
+    %% Association endpoints are mapped to class labels; every changed endpoint is documented below.
     %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
+    %% Removed class ('Class - Gold Standard'!G11): gym
+    %% Removed association ('Association - Gold Standard'!M15): gym -- book
+    %% Non-punish group (Class Non-Punish List): room: practicearea, practice area, free practice area
     class C001["rooms"]
     class C002["subscription"]
     class C003["schedule"]
     class C004["lessons"]
     class C005["trainer"]
     class C006["training sessions"]
-    class C007["payment"]
-    class C008["membership"]
+    class C008["family membership"]
     class C009["customer"]
-    class C010["gym"]
     class C011["booking"]
-    class C012["spots"]
+    class C012["spot"]
     class C013["person"]
     class C014["Payment information"]
-    <<associationOnly>> C014
+    %% Class 'Class - Gold Standard'!G15: added in the revised workbook (blue text); optional (green fill).
+    class C015["timeslot"]
+    <<optional>> C015
 
-    %% Association (Classes Excel terms where available): rooms -- lessons
-    %% Associations Excel (Sheet1!M3:N3): room -- lesson.
-    %% Assumption: "room" -> "rooms" (singular/plural forms are assumed interchangeable).
-    %% Assumption: "lesson" -> "lessons" (singular/plural forms are assumed interchangeable).
+    %% Association: rooms -- lessons
+    %% Workbook ('Association - Gold Standard'!M3): room -- lesson.
+    %% Mapping: "room" -> "rooms" (singular/plural); "lesson" -> "lessons" (singular/plural).
     C001 -- C004
 
-    %% Association (Classes Excel terms where available): schedule -- lessons
-    %% Associations Excel (Sheet1!M4:N4): schedule -- lesson.
-    %% Assumption: "lesson" -> "lessons" (singular/plural forms are assumed interchangeable).
+    %% Association: schedule -- lessons
+    %% Workbook ('Association - Gold Standard'!M4): schedul -- lesson.
+    %% Mapping: "schedul" -> "schedule" (truncated stem); "lesson" -> "lessons" (singular/plural).
     C003 -- C004
 
-    %% Association (Classes Excel terms where available): customer -- subscription
-    %% Associations Excel (Sheet1!M5:N5): customer -- subscription.
-    %% Wording differences: none.
+    %% Association: customer -- subscription
+    %% Workbook ('Association - Gold Standard'!M5): custom -- subscript.
+    %% Mapping: "custom" -> "customer" (truncated stem); "subscript" -> "subscription" (truncated stem).
     C009 -- C002
 
-    %% Association (Classes Excel terms where available): membership -- person
-    %% Associations Excel (Sheet1!M6:N6): membership -- person.
-    %% Wording differences: none.
+    %% Association: family membership -- person
+    %% Workbook ('Association - Gold Standard'!M6): membership -- person.
+    %% Mapping: "membership" -> "family membership" (interpretation: omitted qualifier; "family membership" is the only membership class in the revised class list).
     C008 -- C013
 
-    %% Association (Classes Excel terms where available): customer -- membership
-    %% Associations Excel (Sheet1!M7:N7): customer -- membership.
-    %% Wording differences: none.
+    %% Association: customer -- family membership
+    %% Workbook ('Association - Gold Standard'!M7): custom -- membership.
+    %% Mapping: "custom" -> "customer" (truncated stem); "membership" -> "family membership" (interpretation: omitted qualifier; "family membership" is the only membership class in the revised class list).
     C009 -- C008
 
-    %% Association (Classes Excel terms where available): customer -- Payment information
-    %% Associations Excel (Sheet1!M8:N8): customer -- Payment information.
-    %% Wording differences: none.
-    %% Absent from Classes Excel: "Payment information" is associationOnly; not assumed equivalent to payment: stored banking/payment details may differ from a payment (1_user_stories/sports.txt:3,11).
+    %% Association: customer -- Payment information
+    %% Workbook ('Association - Gold Standard'!M8): custom -- payment inform.
+    %% Mapping: "custom" -> "customer" (truncated stem); "payment inform" -> "Payment information" (truncated stem; class capitalization retained).
     C009 -- C014
 
-    %% Association (Classes Excel terms where available): schedule -- trainer
-    %% Associations Excel (Sheet1!M9:N9): schedule -- trainer.
-    %% Wording differences: none.
+    %% Association: schedule -- trainer
+    %% Workbook ('Association - Gold Standard'!M9): schedul -- trainer.
+    %% Mapping: "schedul" -> "schedule" (truncated stem).
     C003 -- C005
 
-    %% Association (Classes Excel terms where available): training sessions -- schedule
-    %% Associations Excel (Sheet1!M10:N10): training session -- schedule.
-    %% Assumption: "training session" -> "training sessions" (singular/plural forms are assumed interchangeable).
+    %% Association: training sessions -- schedule
+    %% Workbook ('Association - Gold Standard'!M10): training sess -- schedul.
+    %% Mapping: "training sess" -> "training sessions" (truncated stem; singular/plural); "schedul" -> "schedule" (truncated stem).
     C006 -- C003
 
-    %% Association (Classes Excel terms where available): customer -- booking
-    %% Associations Excel (Sheet1!M11:N11): customer -- book.
-    %% Assumption: "book" -> "booking" (verb/noun interpretation; stories describe booking lessons, training sessions and spots (1_user_stories/sports.txt:18,21,23,56-57)).
+    %% Association: customer -- booking
+    %% Workbook ('Association - Gold Standard'!M11): custom -- book.
+    %% Mapping: "custom" -> "customer" (truncated stem); "book" -> "booking" (interpretation: verb-like endpoint read as the booking concept (unchanged from the previous models)).
     C009 -- C011
 
-    %% Association (Classes Excel terms where available): booking -- spots
-    %% Associations Excel (Sheet1!M12:N12): book -- spot.
-    %% Assumption: "book" -> "booking" (verb/noun interpretation; stories describe booking lessons, training sessions and spots (1_user_stories/sports.txt:18,21,23,56-57)).
-    %% Assumption: "spot" -> "spots" (singular/plural forms are assumed interchangeable).
+    %% Association: booking -- spot
+    %% Workbook ('Association - Gold Standard'!M12): book -- spot.
+    %% Mapping: "book" -> "booking" (interpretation: verb-like endpoint read as the booking concept (unchanged from the previous models)).
     C011 -- C012
 
-    %% Association (Classes Excel terms where available): booking -- lessons
-    %% Associations Excel (Sheet1!M13:N13): book -- lesson.
-    %% Assumption: "book" -> "booking" (verb/noun interpretation; stories describe booking lessons, training sessions and spots (1_user_stories/sports.txt:18,21,23,56-57)).
-    %% Assumption: "lesson" -> "lessons" (singular/plural forms are assumed interchangeable).
+    %% Association: booking -- lessons
+    %% Workbook ('Association - Gold Standard'!M13): book -- lesson.
+    %% Mapping: "book" -> "booking" (interpretation: verb-like endpoint read as the booking concept (unchanged from the previous models)); "lesson" -> "lessons" (singular/plural).
     C011 -- C004
 
-    %% Association (Classes Excel terms where available): booking -- training sessions
-    %% Associations Excel (Sheet1!M14:N14): book -- training session.
-    %% Assumption: "book" -> "booking" (verb/noun interpretation; stories describe booking lessons, training sessions and spots (1_user_stories/sports.txt:18,21,23,56-57)).
-    %% Assumption: "training session" -> "training sessions" (singular/plural forms are assumed interchangeable).
+    %% Association: booking -- training sessions
+    %% Workbook ('Association - Gold Standard'!M14): book -- training sess.
+    %% Mapping: "book" -> "booking" (interpretation: verb-like endpoint read as the booking concept (unchanged from the previous models)); "training sess" -> "training sessions" (truncated stem; singular/plural).
     C011 -- C006

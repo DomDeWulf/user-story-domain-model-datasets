@@ -1,10 +1,14 @@
 classDiagram
     %% Project: School
-    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
-    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
-    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
-    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% Source: Gold&Silver Standard.xlsx, sheets 'Class - Gold Standard' (column F) and 'Association - Gold Standard' (columns K:L).
+    %% Class labels match the revised class list exactly, including capitalization.
+    %% Class IDs and order follow the previous models; new classes are appended and removed classes leave ID gaps.
+    %% Workbook legend: red fill = removed, green fill = optional, blue text = added.
+    %% Removed classes and associations are omitted. Optional classes carry <<optional>>; optional associations use a dashed .. line.
+    %% Association endpoints are mapped to class labels; every changed endpoint is documented below.
     %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
+    %% Non-punish group (Class Non-Punish List): material: text, video, picture
+    %% Non-punish group (Class Non-Punish List): question: open question, multiple-choice question
     class C001["submission"]
     class C002["assignment"]
     class C003["behavior"]
@@ -22,118 +26,126 @@ classDiagram
     class C015["teacher"]
     class C016["class"]
     class C017["timetable"]
+    %% Class 'Class - Gold Standard'!F19: added in the revised workbook (blue text).
+    class C018["attendance"]
 
-    %% Association (Classes Excel terms where available): question -- answer
-    %% Associations Excel (Sheet1!K3:L3): question -- answer.
-    %% Wording differences: none.
+    %% Association: question -- answer
+    %% Workbook ('Association - Gold Standard'!K3): question -- answer.
+    %% Mapping: none.
     C010 -- C011
 
-    %% Association (Classes Excel terms where available): question -- digital learning modules
-    %% Associations Excel (Sheet1!K4:L4): question -- digital learning modules.
-    %% Wording differences: none.
+    %% Association: question -- digital learning modules
+    %% Workbook ('Association - Gold Standard'!K4): question -- digital learning modules.
+    %% Mapping: none.
     C010 -- C007
 
-    %% Association (Classes Excel terms where available): digital learning modules -- material
-    %% Associations Excel (Sheet1!K5:L5): digital learning modules -- material.
-    %% Wording differences: none.
+    %% Association: digital learning modules -- material
+    %% Workbook ('Association - Gold Standard'!K5): digital learning modules -- material.
+    %% Mapping: none.
     C007 -- C012
 
-    %% Association (Classes Excel terms where available): digital learning modules -- class
-    %% Associations Excel (Sheet1!K6:L6): digital learning modules -- class.
-    %% Wording differences: none.
+    %% Association: digital learning modules -- class
+    %% Workbook ('Association - Gold Standard'!K6): digital learning modules -- class.
+    %% Mapping: none.
     C007 -- C016
 
-    %% Association (Classes Excel terms where available): class -- assignment
-    %% Associations Excel (Sheet1!K7:L7): class -- assignment.
-    %% Wording differences: none.
+    %% Association: class -- assignment
+    %% Workbook ('Association - Gold Standard'!K7): class -- assignment.
+    %% Mapping: none.
     C016 -- C002
 
-    %% Association (Classes Excel terms where available): class -- student
-    %% Associations Excel (Sheet1!K8:L8): class -- student.
-    %% Wording differences: none.
+    %% Association: class -- student
+    %% Workbook ('Association - Gold Standard'!K8): class -- student.
+    %% Mapping: none.
     C016 -- C013
 
-    %% Association (Classes Excel terms where available): student -- timetable
-    %% Associations Excel (Sheet1!K9:L9): student -- timetable.
-    %% Wording differences: none.
+    %% Association: student -- timetable
+    %% Workbook ('Association - Gold Standard'!K9): student -- timetable.
+    %% Mapping: none.
     C013 -- C017
 
-    %% Association (Classes Excel terms where available): timetable -- teacher
-    %% Associations Excel (Sheet1!K10:L10): timetable -- teacher.
-    %% Wording differences: none.
+    %% Association: timetable -- teacher
+    %% Workbook ('Association - Gold Standard'!K10): timetable -- teacher.
+    %% Mapping: none.
     C017 -- C015
 
-    %% Association (Classes Excel terms where available): teacher -- disciplinary actions
-    %% Associations Excel (Sheet1!K11:L11): teacher -- disciplinary actions.
-    %% Wording differences: none.
+    %% Association: teacher -- disciplinary actions
+    %% Workbook ('Association - Gold Standard'!K11): teacher -- disciplinary actions.
+    %% Mapping: none.
     C015 -- C004
 
-    %% Association (Classes Excel terms where available): teacher -- behavior
-    %% Associations Excel (Sheet1!K12:L12): teacher -- behavior.
-    %% Wording differences: none.
+    %% Association: teacher -- behavior
+    %% Workbook ('Association - Gold Standard'!K12): teacher -- behavior.
+    %% Mapping: none.
     C015 -- C003
 
-    %% Association (Classes Excel terms where available): teacher -- message
-    %% Associations Excel (Sheet1!K13:L13): teacher -- message.
-    %% Wording differences: none.
+    %% Association: teacher -- message
+    %% Workbook ('Association - Gold Standard'!K13): teacher -- message.
+    %% Mapping: none.
     C015 -- C009
 
-    %% Association (Classes Excel terms where available): behavior -- student
-    %% Associations Excel (Sheet1!K14:L14): behavior -- student.
-    %% Wording differences: none.
+    %% Association: behavior -- student
+    %% Workbook ('Association - Gold Standard'!K14): behavior -- student.
+    %% Mapping: none.
     C003 -- C013
 
-    %% Association (Classes Excel terms where available): student -- disciplinary actions
-    %% Associations Excel (Sheet1!K15:L15): student -- disciplinary actions.
-    %% Wording differences: none.
+    %% Association: student -- disciplinary actions
+    %% Workbook ('Association - Gold Standard'!K15): student -- disciplinary actions.
+    %% Mapping: none.
     C013 -- C004
 
-    %% Association (Classes Excel terms where available): student -- message
-    %% Associations Excel (Sheet1!K16:L16): student -- message.
-    %% Wording differences: none.
+    %% Association: student -- message
+    %% Workbook ('Association - Gold Standard'!K16): student -- message.
+    %% Mapping: none.
     C013 -- C009
 
-    %% Association (Classes Excel terms where available): student -- mentor
-    %% Associations Excel (Sheet1!K17:L17): student -- mentor.
-    %% Wording differences: none.
+    %% Association: student -- mentor
+    %% Workbook ('Association - Gold Standard'!K17): student -- mentor.
+    %% Mapping: none.
     C013 -- C005
 
-    %% Association (Classes Excel terms where available): student -- guardian
-    %% Associations Excel (Sheet1!K18:L18): student -- guardian.
-    %% Wording differences: none.
+    %% Association: student -- guardian
+    %% Workbook ('Association - Gold Standard'!K18): student -- guardian.
+    %% Mapping: none.
     C013 -- C008
 
-    %% Association (Classes Excel terms where available): guardian -- behavior
-    %% Associations Excel (Sheet1!K19:L19): guardian -- behavior.
-    %% Wording differences: none.
+    %% Association: guardian -- behavior
+    %% Workbook ('Association - Gold Standard'!K19): guardian -- behavior.
+    %% Mapping: none.
     C008 -- C003
 
-    %% Association (Classes Excel terms where available): student -- submission
-    %% Associations Excel (Sheet1!K20:L20): student -- submission.
-    %% Wording differences: none.
+    %% Association: student -- submission
+    %% Workbook ('Association - Gold Standard'!K20): student -- submission.
+    %% Mapping: none.
     C013 -- C001
 
-    %% Association (Classes Excel terms where available): submission -- grades
-    %% Associations Excel (Sheet1!K21:L21): submission -- grades.
-    %% Wording differences: none.
+    %% Association: submission -- grades
+    %% Workbook ('Association - Gold Standard'!K21): submission -- grades.
+    %% Mapping: none.
     C001 -- C014
 
-    %% Association (Classes Excel terms where available): submission -- assignment
-    %% Associations Excel (Sheet1!K22:L22): submission -- assignment.
-    %% Wording differences: none.
+    %% Association: submission -- assignment
+    %% Workbook ('Association - Gold Standard'!K22): submission -- assignment.
+    %% Mapping: none.
     C001 -- C002
 
-    %% Association (Classes Excel terms where available): message -- administrator
-    %% Associations Excel (Sheet1!K23:L23): message -- administrator.
-    %% Wording differences: none.
+    %% Association: message -- administrator
+    %% Workbook ('Association - Gold Standard'!K23): message -- administrator.
+    %% Mapping: none.
     C009 -- C006
 
-    %% Association (Classes Excel terms where available): message -- guardian
-    %% Associations Excel (Sheet1!K24:L24): message -- guardian.
-    %% Wording differences: none.
+    %% Association: message -- guardian
+    %% Workbook ('Association - Gold Standard'!K24): message -- guardian.
+    %% Mapping: none.
     C009 -- C008
 
-    %% Association (Classes Excel terms where available): message -- mentor
-    %% Associations Excel (Sheet1!K25:L25): message -- mentor.
-    %% Wording differences: none.
+    %% Association: message -- mentor
+    %% Workbook ('Association - Gold Standard'!K25): message -- mentor.
+    %% Mapping: none.
     C009 -- C005
+
+    %% Association: class -- teacher
+    %% Workbook ('Association - Gold Standard'!K26): class -- teacher.
+    %% Mapping: none.
+    %% Status: added in the revised workbook (blue text).
+    C016 -- C015

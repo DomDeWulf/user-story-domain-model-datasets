@@ -1,9 +1,11 @@
 classDiagram
     %% Project: Grocery
-    %% Class labels match Gold standard - Classes.xlsx exactly, including capitalization.
-    %% Singular/plural forms are assumed equivalent; every changed endpoint is documented below.
-    %% Every association preserves one row of Gold standard - Associations.xlsx, in workbook order.
-    %% associationOnly nodes have no matching class in the Classes Excel; exclude them from class evaluation.
+    %% Source: Gold&Silver Standard.xlsx, sheets 'Class - Gold Standard' (column C) and 'Association - Gold Standard' (columns E:F).
+    %% Class labels match the revised class list exactly, including capitalization.
+    %% Class IDs and order follow the previous models; new classes are appended and removed classes leave ID gaps.
+    %% Workbook legend: red fill = removed, green fill = optional, blue text = added.
+    %% Removed classes and associations are omitted. Optional classes carry <<optional>>; optional associations use a dashed .. line.
+    %% Association endpoints are mapped to class labels; every changed endpoint is documented below.
     %% No direction, multiplicity, relationship labels, inheritance, attributes, or methods are inferred.
     class C001["employee"]
     class C002["payments"]
@@ -14,43 +16,65 @@ classDiagram
     class C007["complaint"]
     class C008["salary statement"]
     class C009["working hours"]
+    %% Class 'Class - Gold Standard'!C11: added in the revised workbook (blue text).
+    class C010["manager"]
 
-    %% Association (Classes Excel terms where available): employee -- schedule
-    %% Associations Excel (Sheet1!E3:F3): employee -- schedule.
-    %% Wording differences: none.
+    %% Association: employee -- schedule
+    %% Workbook ('Association - Gold Standard'!E3): employe -- schedul.
+    %% Mapping: "employe" -> "employee" (truncated stem); "schedul" -> "schedule" (truncated stem).
     C001 -- C003
 
-    %% Association (Classes Excel terms where available): employee -- working hours
-    %% Associations Excel (Sheet1!E4:F4): employee -- working hours.
-    %% Wording differences: none.
+    %% Association: employee -- working hours
+    %% Workbook ('Association - Gold Standard'!E4, E5): employe -- working hour.
+    %% Mapping: "employe" -> "employee" (truncated stem); "working hour" -> "working hours" (singular/plural).
+    %% Note: The revised workbook repeats E4 (employee -- working hours) in E5; the previous models had employee -- complaint here. Rows E4 and E5 are drawn as one association.
     C001 -- C009
 
-    %% Association (Classes Excel terms where available): employee -- complaint
-    %% Associations Excel (Sheet1!E5:F5): employee -- complaint.
-    %% Wording differences: none.
-    C001 -- C007
-
-    %% Association (Classes Excel terms where available): employee -- message
-    %% Associations Excel (Sheet1!E6:F6): employee -- message.
-    %% Wording differences: none.
+    %% Association: employee -- message
+    %% Workbook ('Association - Gold Standard'!E6): employe -- messag.
+    %% Mapping: "employe" -> "employee" (truncated stem); "messag" -> "message" (truncated stem).
     C001 -- C004
 
-    %% Association (Classes Excel terms where available): employee -- salary statement
-    %% Associations Excel (Sheet1!E7:F7): employee -- salary statement.
-    %% Wording differences: none.
+    %% Association: employee -- salary statement
+    %% Workbook ('Association - Gold Standard'!E7): employe -- salary stat.
+    %% Mapping: "employe" -> "employee" (truncated stem); "salary stat" -> "salary statement" (truncated stem).
     C001 -- C008
 
-    %% Association (Classes Excel terms where available): employee -- contracts
-    %% Associations Excel (Sheet1!E8:F8): employee -- contract.
-    %% Assumption: "contract" -> "contracts" (singular/plural forms are assumed interchangeable).
+    %% Association: employee -- contracts
+    %% Workbook ('Association - Gold Standard'!E8): employe -- contract.
+    %% Mapping: "employe" -> "employee" (truncated stem); "contract" -> "contracts" (singular/plural).
     C001 -- C005
 
-    %% Association (Classes Excel terms where available): employee -- certificates
-    %% Associations Excel (Sheet1!E9:F9): employee -- certificate.
-    %% Assumption: "certificate" -> "certificates" (singular/plural forms are assumed interchangeable).
+    %% Association: employee -- certificates
+    %% Workbook ('Association - Gold Standard'!E9): employe -- certif.
+    %% Mapping: "employe" -> "employee" (truncated stem); "certif" -> "certificates" (truncated stem; singular/plural).
     C001 -- C006
 
-    %% Association (Classes Excel terms where available): payments -- salary statement
-    %% Associations Excel (Sheet1!E10:F10): payment -- salary statement.
-    %% Assumption: "payment" -> "payments" (singular/plural forms are assumed interchangeable).
+    %% Association: payments -- salary statement
+    %% Workbook ('Association - Gold Standard'!E10): payment -- salary stat.
+    %% Mapping: "payment" -> "payments" (singular/plural); "salary stat" -> "salary statement" (truncated stem).
     C002 -- C008
+
+    %% Association: employee -- payments
+    %% Workbook ('Association - Gold Standard'!E11): employee -- payment.
+    %% Mapping: "payment" -> "payments" (singular/plural).
+    %% Status: added in the revised workbook (blue text); optional (green fill).
+    C001 .. C002
+
+    %% Association: manager -- employee
+    %% Workbook ('Association - Gold Standard'!E12): manager -- employee.
+    %% Mapping: none.
+    %% Status: added in the revised workbook (blue text); optional (green fill).
+    C010 .. C001
+
+    %% Association: manager -- complaint
+    %% Workbook ('Association - Gold Standard'!E13): manager -- complaint.
+    %% Mapping: none.
+    %% Status: added in the revised workbook (blue text).
+    C010 -- C007
+
+    %% Association: manager -- message
+    %% Workbook ('Association - Gold Standard'!E14): manager -- message.
+    %% Mapping: none.
+    %% Status: added in the revised workbook (blue text).
+    C010 -- C004
