@@ -1,0 +1,117 @@
+classDiagram
+    %% Project: International football association portal, group 11
+    %% Source: Dalpiaz, Sturm, Gieske (2020), Extraction of Conceptual Models: User Stories vs. Use Cases, https://doi.org/10.5281/zenodo.4121935, CC BY 4.0.
+    %% Expert (gold) class diagram: g11-US.uxf (UMLet); user stories: IFA/g11-us/g11-us-req.pdf.
+    %% Converted with scripts/additional_projects/; rules and limits in docs/additional-projects.md.
+    %% Class labels are copied exactly from the expert diagram, including spelling errors.
+    %% Associations, aggregations and compositions become undirected -- edges; duplicates are merged.
+    %% Inheritance, attributes, operations, multiplicities and relationship labels are not part of the gold model;
+    %% inheritance links are listed as comments below.
+    class C001["Visitor"]
+    class C002["Transaction"]
+    class C003["IFA Admin"]
+    class C004["Fan"]
+    class C005["Team"]
+    class C006["Game"]
+    class C007["League"]
+    class C008["Player"]
+    class C009["Data"]
+    class C010["Notification"]
+    class C011["Team Manager"]
+    class C012["Social Media"]
+    class C013["News"]
+    class C014["Comment"]
+    class C015["Statistics"]
+    class C016["Referee"]
+    class C017["Event"]
+    class C018["Schedule"]
+    class C019["Schedule Rule"]
+    class C020["Account"]
+    class C021["Budget"]
+    class C022["Budget Policy"]
+
+    %% Association: Account -- Visitor
+    %% Expert diagram: directed association "has".
+    C020 -- C001
+
+    %% Association: Data -- Notification
+    %% Expert diagram: directed association "is related to".
+    C009 -- C010
+
+    %% Association: Notification -- Fan
+    %% Expert diagram: directed association "registers".
+    C010 -- C004
+
+    %% Association: Team Manager -- Team
+    %% Expert diagram: directed association "has".
+    C011 -- C005
+
+    %% Association: Comment -- Social Media
+    %% Expert diagram: directed association "has".
+    C014 -- C012
+
+    %% Association: News -- Team Manager
+    %% Expert diagram: directed association "posts".
+    C013 -- C011
+
+    %% Association: Social Media -- Team
+    %% Expert diagram: directed association "has".
+    C012 -- C005
+
+    %% Association: News -- Social Media
+    %% Expert diagram: directed association "has".
+    C013 -- C012
+
+    %% Association: Comment -- Fan
+    %% Expert diagram: directed association "posts".
+    C014 -- C004
+
+    %% Association: Data -- Statistics
+    %% Expert diagram: directed association "is related to".
+    C009 -- C015
+
+    %% Association: Statistics -- Visitor
+    %% Expert diagram: directed association "access".
+    C015 -- C001
+
+    %% Association: Event -- Game
+    %% Expert diagram: directed association "consists of".
+    C017 -- C006
+
+    %% Association: Event -- Referee
+    %% Expert diagram: directed association "reports".
+    C017 -- C016
+
+    %% Association: Schedule Rule -- IFA Admin
+    %% Expert diagram: directed association "determines".
+    C019 -- C003
+
+    %% Association: Schedule -- IFA Admin
+    %% Expert diagram: directed association "processes".
+    C018 -- C003
+
+    %% Association: Game -- Schedule
+    %% Expert diagram: directed association "consists of".
+    C006 -- C018
+
+    %% Association: Budget -- Team
+    %% Expert diagram: directed association "has".
+    C021 -- C005
+
+    %% Association: Transaction -- Team
+    %% Expert diagram: directed association "has".
+    C002 -- C005
+
+    %% Association: Budget Policy -- IFA Admin
+    %% Expert diagram: directed association "determines".
+    C022 -- C003
+
+    %% Inheritance in the expert diagram (general -- specific), not counted as associations:
+    %%   Data <|-- Team
+    %%   Data <|-- Game
+    %%   Data <|-- League
+    %%   Data <|-- Player
+    %%   Visitor <|-- IFA Admin
+    %%   Visitor <|-- Team Manager
+    %%   Visitor <|-- Fan
+    %%   Visitor <|-- Referee

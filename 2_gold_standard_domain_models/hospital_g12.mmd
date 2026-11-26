@@ -1,0 +1,116 @@
+classDiagram
+    %% Project: Hospital management system, group 12
+    %% Source: Dalpiaz, Sturm, Gieske (2020), Extraction of Conceptual Models: User Stories vs. Use Cases, https://doi.org/10.5281/zenodo.4121935, CC BY 4.0.
+    %% Expert (gold) class diagram: g12_US.uxf (UMLet); user stories: HOS/g12-us/g12-us-req.docx.
+    %% Converted with scripts/additional_projects/; rules and limits in docs/additional-projects.md.
+    %% Class labels are copied exactly from the expert diagram, including spelling errors.
+    %% Associations, aggregations and compositions become undirected -- edges; duplicates are merged.
+    %% Inheritance, attributes, operations, multiplicities and relationship labels are not part of the gold model;
+    %% inheritance links are listed as comments below.
+    %% Corrections to the expert diagram are marked below and listed in docs/additional-projects.md.
+    class C001["User"]
+    class C002["Lab Employee"]
+    %% Marked optional: no story mentions finance or billing staff, and the class has no association.
+    class C003["Financial Admin"]
+    <<optional>> C003
+    class C004["Nurse"]
+    class C005["Receptionist"]
+    class C006["Doctor"]
+    class C007["Patient"]
+    %% Marked optional: no story mentions a pharmacist, and the class has no association.
+    class C008["Pharmacist"]
+    <<optional>> C008
+    class C009["Medical Record"]
+    class C010["Fitness Device"]
+    class C011["Test Results"]
+    class C012["External Device"]
+    class C013["Medical Test"]
+    class C014["Appointment"]
+    class C015["HMS"]
+    class C016["Bed"]
+    class C017["Department"]
+
+    %% Association: HMS -- User
+    %% Expert diagram: directed association.
+    C015 -- C001
+
+    %% Association: Medical Record -- Doctor
+    %% Expert diagram: directed association.
+    C009 -- C006
+
+    %% Association: Medical Record -- Patient
+    %% Expert diagram: directed association.
+    C009 -- C007
+
+    %% Association: HMS -- Medical Record
+    %% Expert diagram: aggregation.
+    C015 -- C009
+
+    %% Association: Medical Record -- Lab Employee
+    %% Expert diagram: directed association.
+    C009 -- C002
+
+    %% Association: HMS -- Fitness Device
+    %% Expert diagram: directed association.
+    C015 -- C010
+
+    %% Association: HMS -- External Device
+    %% Expert diagram: directed association.
+    C015 -- C012
+
+    %% Association: Patient -- Fitness Device
+    %% Expert diagram: aggregation "layer=2".
+    C007 -- C010
+
+    %% Association: Medical Test -- Test Results
+    %% Expert diagram: aggregation "layer=2".
+    C013 -- C011
+
+    %% Association: Medical Test -- Doctor
+    %% Expert diagram: directed association.
+    C013 -- C006
+
+    %% Association: Medical Record -- Medical Test
+    %% Expert diagram: aggregation "layer=2".
+    C009 -- C013
+
+    %% Association: Medical Test -- Lab Employee
+    %% Expert diagram: directed association.
+    C013 -- C002
+
+    %% Association: Test Results -- Patient
+    %% Expert diagram: directed association.
+    C011 -- C007
+
+    %% Association: Appointment -- Receptionist
+    %% Expert diagram: directed association.
+    C014 -- C005
+
+    %% Association: Appointment -- Patient
+    %% Expert diagram: aggregation.
+    C014 -- C007
+
+    %% Association: Appointment -- Doctor
+    %% Expert diagram: aggregation.
+    C014 -- C006
+
+    %% Association: Bed -- Patient
+    %% Expert diagram: directed association.
+    C016 -- C007
+
+    %% Association: Patient -- Doctor
+    %% Expert diagram: directed association.
+    C007 -- C006
+
+    %% Association: Department -- User
+    %% Expert diagram: aggregation.
+    C017 -- C001
+
+    %% Inheritance in the expert diagram (general -- specific), not counted as associations:
+    %%   User <|-- Doctor
+    %%   User <|-- Nurse
+    %%   User <|-- Patient
+    %%   User <|-- Receptionist
+    %%   User <|-- Lab Employee
+    %%   User <|-- Pharmacist
+    %%   User <|-- Financial Admin

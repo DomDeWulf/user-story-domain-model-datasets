@@ -22,6 +22,8 @@ README.md
 
 Projects: Camperplus, Fish & Chips, Grocery, Planningpoker, Recycling, School, Sports, Supermarket, and Ticket. Matching filenames pair stories with models (for example, `school.txt` and `school.mmd`).
 
+**Additional projects (addition):** ten further projects with user stories and expert class diagrams from two other appendices of the same research group (CC BY 4.0): five hospital and four football-portal specifications ([Zenodo 4121935](https://doi.org/10.5281/zenodo.4121935)) and Data Hub ([Zenodo 5905846](https://doi.org/10.5281/zenodo.5905846)). They follow different modeling conventions and the projects of one system are not independent; see [docs/additional-projects.md](docs/additional-projects.md) for sources, conversion rules, the corrections made to the expert diagrams, and limits.
+
 ## Preparation
 
 The `original_data/` directory has been removed from this repository. The original appendix files, including the Excel gold-standard workbooks, are available in `REJ-main.zip` from the linked Zenodo repository.

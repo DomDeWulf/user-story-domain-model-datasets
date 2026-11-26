@@ -1,0 +1,125 @@
+classDiagram
+    %% Project: International football association portal, group 08
+    %% Source: Dalpiaz, Sturm, Gieske (2020), Extraction of Conceptual Models: User Stories vs. Use Cases, https://doi.org/10.5281/zenodo.4121935, CC BY 4.0.
+    %% Expert (gold) class diagram: g08-US.uxf (UMLet); user stories: IFA/g08-us/g08-us-req.pdf.
+    %% Converted with scripts/additional_projects/; rules and limits in docs/additional-projects.md.
+    %% Class labels are copied exactly from the expert diagram, including spelling errors.
+    %% Associations, aggregations and compositions become undirected -- edges; duplicates are merged.
+    %% Inheritance, attributes, operations, multiplicities and relationship labels are not part of the gold model;
+    %% inheritance links are listed as comments below.
+    class C001["IFA"]
+    class C002["League"]
+    class C003["Season"]
+    class C004["Policy"]
+    class C005["Game"]
+    class C006["Budget Policy"]
+    class C007["Team"]
+    class C008["Budget"]
+    class C009["Referee"]
+    class C010["Schedule"]
+    class C011["Event"]
+    class C012["Resource"]
+    class C013["Social Media Page"]
+    class C014["Player"]
+    class C015["Fan"]
+    class C016["Transaction"]
+    class C017["Coach"]
+    class C018["Restriction"]
+    class C019["Stakeholder"]
+    class C020["Notification"]
+    class C021["Schedule Policy"]
+
+    %% Association: Season -- Policy
+    %% Expert diagram: directed association.
+    C003 -- C004
+
+    %% Association: League -- Policy
+    %% Expert diagram: directed association.
+    C002 -- C004
+
+    %% Association: Event -- Game
+    %% Expert diagram: directed association "has".
+    C011 -- C005
+
+    %% Association: League -- Referee
+    %% Expert diagram: directed association "is assigned to".
+    C002 -- C009
+
+    %% Association: Schedule -- IFA
+    %% Expert diagram: directed association "plan".
+    C010 -- C001
+
+    %% Association: Event -- Referee
+    %% Expert diagram: directed association "records".
+    C011 -- C009
+
+    %% Association: Budget -- Team
+    %% Expert diagram: directed association "has".
+    C008 -- C007
+
+    %% Association: Resource -- Team
+    %% Expert diagram: directed association "has".
+    C012 -- C007
+
+    %% Association: Transaction -- Team
+    %% Expert diagram: directed association "has".
+    C016 -- C007
+
+    %% Association: Social Media Page -- Team
+    %% Expert diagram: directed association "has".
+    C013 -- C007
+
+    %% Association: Social Media Page -- Coach
+    %% Expert diagram: directed association "has".
+    C013 -- C017
+
+    %% Association: Social Media Page -- Player
+    %% Expert diagram: directed association "has".
+    C013 -- C014
+
+    %% Association: Player -- Team
+    %% Expert diagram: directed association "has".
+    C014 -- C007
+
+    %% Association: Coach -- Team
+    %% Expert diagram: directed association "has".
+    C017 -- C007
+
+    %% Association: Restriction -- Referee
+    %% Expert diagram: directed association "has".
+    C018 -- C009
+
+    %% Association: Notification -- Stakeholder
+    %% Expert diagram: directed association "recieves".
+    C020 -- C019
+
+    %% Association: Team -- Fan
+    %% Expert diagram: directed association "follows".
+    C007 -- C015
+
+    %% Association: Player -- Fan
+    %% Expert diagram: directed association "follows".
+    C014 -- C015
+
+    %% Association: Game -- Schedule
+    %% Expert diagram: directed association.
+    C005 -- C010
+
+    %% Association: Resource -- IFA
+    %% Expert diagram: directed association "monitors".
+    C012 -- C001
+
+    %% Association: Game -- Referee
+    %% Expert diagram: directed association "is scheduled for".
+    C005 -- C009
+
+    %% Association: Schedule -- Fan
+    %% Expert diagram: directed association "see".
+    C010 -- C015
+
+    %% Inheritance in the expert diagram (general -- specific), not counted as associations:
+    %%   Policy <|-- Budget Policy
+    %%   Stakeholder <|-- Fan
+    %%   Stakeholder <|-- Referee
+    %%   Stakeholder <|-- IFA
+    %%   Policy <|-- Schedule Policy
