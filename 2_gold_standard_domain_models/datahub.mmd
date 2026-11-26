@@ -1,0 +1,93 @@
+classDiagram
+    %% Project: Data Hub
+    %% Source: Bragilovski, Dalpiaz, Sturm (2022), Guided Derivation of Conceptual Models from User Stories, https://doi.org/10.5281/zenodo.5905846, CC BY 4.0.
+    %% Expert (gold) class diagram: tagging-fd-dh-cdg.uxf (UMLet); user stories: ExperimentForms/Form-DH-Plain.docx.
+    %% Converted with scripts/additional_projects/; rules and limits in docs/additional-projects.md.
+    %% Class labels are copied exactly from the expert diagram, including spelling errors.
+    %% Associations, aggregations and compositions become undirected -- edges; duplicates are merged.
+    %% Inheritance, attributes, operations, multiplicities and relationship labels are not part of the gold model;
+    %% inheritance links are listed as comments below.
+    %% Corrections to the expert diagram are marked below and listed in docs/additional-projects.md.
+    class C001["Account"]
+    class C002["Data Package"]
+    class C003["Publisher"]
+    class C004["Consumer"]
+    class C005["Data"]
+    class C006["Tag"]
+    class C007["Published Data Package"]
+    class C008["Example"]
+    class C009["Single download file"]
+    class C010["Site"]
+    %% Label corrected (misspelling): expert diagram has "Configurtaion Parameter".
+    class C011["Configuration Parameter"]
+    class C012["Site deployment"]
+    class C013["Pricing plan"]
+    class C014["Billing system"]
+    class C015["Key metric"]
+
+    %% Association: Account -- Data Package
+    %% Expert diagram: association.
+    C001 -- C002
+
+    %% Association: Publisher -- Data
+    %% Expert diagram: association.
+    C003 -- C005
+
+    %% Association: Consumer -- Data
+    %% Expert diagram: association.
+    C004 -- C005
+
+    %% Association: Data Package -- Data
+    %% Expert diagram: association.
+    C002 -- C005
+
+    %% Association: Tag -- Data Package
+    %% Expert diagram: association.
+    C006 -- C002
+
+    %% Association: Consumer -- Data Package
+    %% Expert diagram: association.
+    C004 -- C002
+
+    %% Association: Example -- Published Data Package
+    %% Expert diagram: association.
+    C008 -- C007
+
+    %% Association: Single download file -- Data Package
+    %% Expert diagram: association.
+    C009 -- C002
+
+    %% Association: Site -- Site deployment
+    %% Expert diagram: association.
+    C010 -- C012
+
+    %% Association: Consumer -- Account
+    %% Expert diagram: association.
+    C004 -- C001
+
+    %% Association: Site -- Pricing plan
+    %% Expert diagram: association.
+    C010 -- C013
+
+    %% Association: Publisher -- Data Package
+    %% Expert diagram: association.
+    C003 -- C002
+
+    %% Association: Site -- Configuration Parameter
+    %% Expert diagram: association.
+    C010 -- C011
+
+    %% Association: Site -- Key metric
+    %% Expert diagram: association.
+    C010 -- C015
+
+    %% Association: Site -- Billing system
+    %% Expert diagram: association.
+    C010 -- C014
+
+    %% Association: Publisher -- Account
+    %% Expert diagram: association.
+    C003 -- C001
+
+    %% Inheritance in the expert diagram (general -- specific), not counted as associations:
+    %%   Data Package <|-- Published Data Package

@@ -1,0 +1,131 @@
+classDiagram
+    %% Project: Hospital management system, group 10
+    %% Source: Dalpiaz, Sturm, Gieske (2020), Extraction of Conceptual Models: User Stories vs. Use Cases, https://doi.org/10.5281/zenodo.4121935, CC BY 4.0.
+    %% Expert (gold) class diagram: g10_us.uxf (UMLet); user stories: HOS/g10-us/g10-us-req-cm.pdf.
+    %% Converted with scripts/additional_projects/; rules and limits in docs/additional-projects.md.
+    %% Class labels are copied exactly from the expert diagram, including spelling errors.
+    %% Associations, aggregations and compositions become undirected -- edges; duplicates are merged.
+    %% Inheritance, attributes, operations, multiplicities and relationship labels are not part of the gold model;
+    %% inheritance links are listed as comments below.
+    class C001["Nurse"]
+    class C002["Doctor"]
+    class C003["Electronic Medical Record"]
+    class C004["Staff Member"]
+    class C005["Department"]
+    class C006["Administrator"]
+    class C007["Room"]
+    class C008["Appointment"]
+    class C009["Beds"]
+    class C010["Hospital"]
+    class C011["Schedule"]
+    class C012["Data"]
+    class C013["Mobile Devices"]
+    class C014["Medical Devices"]
+    class C015["Patient"]
+    class C016["Room Schedule"]
+    class C017["Appointment Schedule"]
+    class C018["Facility Manager"]
+    class C019["Medical Staff Member"]
+    class C020["Receptionist"]
+
+    %% Association: Electronic Medical Record -- Nurse
+    %% Expert diagram: directed association.
+    C003 -- C001
+
+    %% Association: Electronic Medical Record -- Doctor
+    %% Expert diagram: directed association.
+    C003 -- C002
+
+    %% Association: Room Schedule -- Administrator
+    %% Expert diagram: directed association.
+    C016 -- C006
+
+    %% Association: Room -- Appointment
+    %% Expert diagram: directed association.
+    C007 -- C008
+
+    %% Association: Beds -- Patient
+    %% Expert diagram: directed association.
+    C009 -- C015
+
+    %% Association: Room -- Facility Manager
+    %% Expert diagram: directed association.
+    C007 -- C018
+
+    %% Association: Medical Staff Member -- Patient
+    %% Expert diagram: directed association.
+    C019 -- C015
+
+    %% Association: Schedule -- Medical Staff Member
+    %% Expert diagram: directed association.
+    C011 -- C019
+
+    %% Association: Appointment -- Patient
+    %% Expert diagram: directed association.
+    C008 -- C015
+
+    %% Association: Appointment -- Receptionist
+    %% Expert diagram: directed association.
+    C008 -- C020
+
+    %% Association: Schedule -- Receptionist
+    %% Expert diagram: directed association.
+    C011 -- C020
+
+    %% Association: Electronic Medical Record -- Data
+    %% Expert diagram: aggregation.
+    C003 -- C012
+
+    %% Association: Data -- Hospital
+    %% Expert diagram: directed association.
+    C012 -- C010
+
+    %% Association: Data -- Patient
+    %% Expert diagram: directed association.
+    C012 -- C015
+
+    %% Association: Data -- Medical Devices
+    %% Expert diagram: directed association.
+    C012 -- C014
+
+    %% Association: Data -- Medical Staff Member
+    %% Expert diagram: directed association.
+    C012 -- C019
+
+    %% Association: Mobile Devices -- Medical Staff Member
+    %% Expert diagram: directed association.
+    C013 -- C019
+
+    %% Association: Room -- Beds
+    %% Expert diagram: aggregation.
+    C007 -- C009
+
+    %% Association: Patient -- Electronic Medical Record
+    %% Expert diagram: aggregation.
+    C015 -- C003
+
+    %% Association: Staff Member -- Department
+    %% Expert diagram: aggregation.
+    C004 -- C005
+
+    %% Association: Room -- Room Schedule
+    %% Expert diagram: aggregation.
+    C007 -- C016
+
+    %% Association: Appointment -- Appointment Schedule
+    %% Expert diagram: aggregation.
+    C008 -- C017
+
+    %% Association: Doctor -- Schedule
+    %% Expert diagram: aggregation.
+    C002 -- C011
+
+    %% Inheritance in the expert diagram (general -- specific), not counted as associations:
+    %%   Medical Staff Member <|-- Nurse
+    %%   Medical Staff Member <|-- Doctor
+    %%   Staff Member <|-- Administrator
+    %%   Schedule <|-- Room Schedule
+    %%   Schedule <|-- Appointment Schedule
+    %%   Staff Member <|-- Facility Manager
+    %%   Staff Member <|-- Medical Staff Member
+    %%   Staff Member <|-- Receptionist

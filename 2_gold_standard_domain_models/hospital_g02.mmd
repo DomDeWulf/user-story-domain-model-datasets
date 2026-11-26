@@ -1,0 +1,136 @@
+classDiagram
+    %% Project: Hospital management system, group 02
+    %% Source: Dalpiaz, Sturm, Gieske (2020), Extraction of Conceptual Models: User Stories vs. Use Cases, https://doi.org/10.5281/zenodo.4121935, CC BY 4.0.
+    %% Expert (gold) class diagram: g02_US.uxf (UMLet); user stories: HOS/g02-us/g02-us-req-cm.pdf.
+    %% Converted with scripts/additional_projects/; rules and limits in docs/additional-projects.md.
+    %% Class labels are copied exactly from the expert diagram, including spelling errors.
+    %% Associations, aggregations and compositions become undirected -- edges; duplicates are merged.
+    %% Inheritance, attributes, operations, multiplicities and relationship labels are not part of the gold model;
+    %% inheritance links are listed as comments below.
+    class C001["Doctor"]
+    class C002["Prescription"]
+    class C003["Patient"]
+    class C004["Pharmacist"]
+    class C005["HMS"]
+    class C006["EMR"]
+    class C007["Personal Information"]
+    class C008["Medical History"]
+    class C009["Nurse"]
+    class C010["Notes"]
+    class C011["System Admin"]
+    class C012["Receptionist"]
+    class C013["Appointment"]
+    class C014["Data"]
+    class C015["Mobile Device"]
+    class C016["System Analyst"]
+    class C017["GDPR"]
+    class C018["Bed Occupancy Rate"]
+    class C019["Employee Schedule"]
+    class C020["Room Schedule"]
+    class C021["Test Results"]
+    class C022["Lab"]
+
+    %% Association: Prescription -- Doctor
+    %% Expert diagram: directed association.
+    C002 -- C001
+
+    %% Association: HMS -- EMR
+    %% Expert diagram: aggregation.
+    C005 -- C006
+
+    %% Association: Pharmacist -- Prescription
+    %% Expert diagram: directed association; directed association (drawn more than once, merged).
+    C004 -- C002
+
+    %% Association: Prescription -- Patient
+    %% Expert diagram: directed association.
+    C002 -- C003
+
+    %% Association: Pharmacist -- Patient
+    %% Expert diagram: directed association.
+    C004 -- C003
+
+    %% Association: Personal Information -- Patient
+    %% Expert diagram: directed association.
+    C007 -- C003
+
+    %% Association: HMS -- Personal Information
+    %% Expert diagram: aggregation.
+    C005 -- C007
+
+    %% Association: Patient -- Medical History
+    %% Expert diagram: aggregation.
+    C003 -- C008
+
+    %% Association: EMR -- Medical History
+    %% Expert diagram: aggregation.
+    C006 -- C008
+
+    %% Association: Medical History -- Doctor
+    %% Expert diagram: directed association.
+    C008 -- C001
+
+    %% Association: Personal Information -- Doctor
+    %% Expert diagram: directed association.
+    C007 -- C001
+
+    %% Association: Medical History -- Nurse
+    %% Expert diagram: directed association.
+    C008 -- C009
+
+    %% Association: Personal Information -- Nurse
+    %% Expert diagram: directed association.
+    C007 -- C009
+
+    %% Association: Notes -- Nurse
+    %% Expert diagram: directed association.
+    C010 -- C009
+
+    %% Association: EMR -- Receptionist
+    %% Expert diagram: directed association.
+    C006 -- C012
+
+    %% Association: Appointment -- Receptionist
+    %% Expert diagram: directed association.
+    C013 -- C012
+
+    %% Association: Appointment -- Patient
+    %% Expert diagram: directed association.
+    C013 -- C003
+
+    %% Association: Data -- Mobile Device
+    %% Expert diagram: directed association.
+    C014 -- C015
+
+    %% Association: EMR -- Data
+    %% Expert diagram: aggregation.
+    C006 -- C014
+
+    %% Association: Data -- System Analyst
+    %% Expert diagram: directed association.
+    C014 -- C016
+
+    %% Association: GDPR -- HMS
+    %% Expert diagram: directed association.
+    C017 -- C005
+
+    %% Association: HMS -- System Admin
+    %% Expert diagram: directed association.
+    C005 -- C011
+
+    %% Association: Test Results -- Patient
+    %% Expert diagram: directed association.
+    C021 -- C003
+
+    %% Association: HMS -- Doctor
+    %% Expert diagram: directed association.
+    C005 -- C001
+
+    %% Association: Test Results -- Lab
+    %% Expert diagram: directed association.
+    C021 -- C022
+
+    %% Inheritance in the expert diagram (general -- specific), not counted as associations:
+    %%   Data <|-- Room Schedule
+    %%   Data <|-- Bed Occupancy Rate
+    %%   Data <|-- Employee Schedule

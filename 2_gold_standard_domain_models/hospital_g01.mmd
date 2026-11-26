@@ -1,0 +1,182 @@
+classDiagram
+    %% Project: Hospital management system, group 01
+    %% Source: Dalpiaz, Sturm, Gieske (2020), Extraction of Conceptual Models: User Stories vs. Use Cases, https://doi.org/10.5281/zenodo.4121935, CC BY 4.0.
+    %% Expert (gold) class diagram: g01-US-tagged.uxf (UMLet); user stories: HOS/g01-us/g01-us-tagged.pdf.
+    %% Converted with scripts/additional_projects/; rules and limits in docs/additional-projects.md.
+    %% Class labels are copied exactly from the expert diagram, including spelling errors.
+    %% Associations, aggregations and compositions become undirected -- edges; duplicates are merged.
+    %% Inheritance, attributes, operations, multiplicities and relationship labels are not part of the gold model;
+    %% inheritance links are listed as comments below.
+    %% Corrections to the expert diagram are marked below and listed in docs/additional-projects.md.
+    class C001["UHOPE Employee"]
+    class C002["Patient"]
+    class C003["Medical Record"]
+    class C004["Patient Information"]
+    class C005["Appointment"]
+    class C006["Department"]
+    class C007["Receptionist"]
+    class C008["Doctor"]
+    class C009["Person"]
+    class C010["Test Results"]
+    class C011["Medical History"]
+    class C012["Mobile Phone"]
+    class C013["Tablet"]
+    class C014["Mobile Hospital Device"]
+    class C015["Device"]
+    class C016["Schedule"]
+    class C017["Nurse"]
+    class C018["Room"]
+    class C019["Bill"]
+    class C020["Billing Employee"]
+    class C021["Hospital Management System"]
+    class C022["GDPR Regulations"]
+    class C023["System Administrator"]
+    class C024["User"]
+    class C025["Time Slot"]
+    %% Label corrected (misspelling): expert diagram has "Uneraged Child".
+    class C026["Underage Child"]
+
+    %% Association: Medical Record -- Patient
+    %% Expert diagram: directed association.
+    C003 -- C002
+
+    %% Association: Patient Information -- UHOPE Employee
+    %% Expert diagram: directed association.
+    C004 -- C001
+
+    %% Association: Department -- UHOPE Employee
+    %% Expert diagram: directed association.
+    C006 -- C001
+
+    %% Association: Medical Record -- Receptionist
+    %% Expert diagram: directed association.
+    C003 -- C007
+
+    %% Association: Patient -- Doctor
+    %% Expert diagram: directed association.
+    C002 -- C008
+
+    %% Association: Medical Record -- Patient Information
+    %% Expert diagram: aggregation.
+    C003 -- C004
+
+    %% Association: Medical Record -- Test Results
+    %% Expert diagram: aggregation.
+    C003 -- C010
+
+    %% Association: Medical Record -- Medical History
+    %% Expert diagram: aggregation.
+    C003 -- C011
+
+    %% Association: Test Results -- Patient
+    %% Expert diagram: directed association.
+    C010 -- C002
+
+    %% Association: Medical Record -- Doctor
+    %% Expert diagram: directed association.
+    C003 -- C008
+
+    %% Association: Medical Record -- UHOPE Employee
+    %% Expert diagram: directed association.
+    C003 -- C001
+
+    %% Association: Schedule -- Person
+    %% Expert diagram: directed association.
+    C016 -- C009
+
+    %% Association: Patient Information -- Mobile Hospital Device
+    %% Expert diagram: directed association.
+    C004 -- C014
+
+    %% Association: Appointment -- Receptionist
+    %% Expert diagram: directed association.
+    C005 -- C007
+
+    %% Association: Schedule -- Receptionist
+    %% Expert diagram: directed association.
+    C016 -- C007
+
+    %% Association: Schedule -- Appointment
+    %% Expert diagram: aggregation.
+    C016 -- C005
+
+    %% Association: Room -- Appointment
+    %% Expert diagram: directed association.
+    C018 -- C005
+
+    %% Association: Appointment -- Patient
+    %% Expert diagram: directed association.
+    C005 -- C002
+
+    %% Association: Bill -- Billing Employee
+    %% Expert diagram: directed association.
+    C019 -- C020
+
+    %% Association: Appointment -- Bill
+    %% Expert diagram: directed association.
+    C005 -- C019
+
+    %% Association: Bill -- Patient
+    %% Expert diagram: directed association.
+    C019 -- C002
+
+    %% Association: GDPR Regulations -- Hospital Management System
+    %% Expert diagram: directed association.
+    C022 -- C021
+
+    %% Association: Hospital Management System -- User
+    %% Expert diagram: directed association.
+    C021 -- C024
+
+    %% Association: Patient -- Medical History
+    %% Expert diagram: aggregation.
+    C002 -- C011
+
+    %% Association: Hospital Management System -- Doctor
+    %% Expert diagram: directed association.
+    C021 -- C008
+
+    %% Association: Medical Record -- Nurse
+    %% Expert diagram: directed association.
+    C003 -- C017
+
+    %% Association: Device -- UHOPE Employee
+    %% Expert diagram: directed association.
+    C015 -- C001
+
+    %% Association: Room -- Schedule
+    %% Expert diagram: aggregation.
+    C018 -- C016
+
+    %% Association: Schedule -- Time Slot
+    %% Expert diagram: aggregation.
+    C016 -- C025
+
+    %% Association: Schedule -- Doctor
+    %% Expert diagram: directed association.
+    C016 -- C008
+
+    %% Association: Patient Information -- Patient
+    %% Expert diagram: directed association.
+    C004 -- C002
+
+    %% Association: Underage Child -- Patient
+    %% Expert diagram: directed association.
+    C026 -- C002
+
+    %% Association: Underage Child -- Medical Record
+    %% Expert diagram: aggregation.
+    C026 -- C003
+
+    %% Inheritance in the expert diagram (general -- specific), not counted as associations:
+    %%   UHOPE Employee <|-- Doctor
+    %%   UHOPE Employee <|-- Receptionist
+    %%   Person <|-- UHOPE Employee
+    %%   Person <|-- Patient
+    %%   Device <|-- Mobile Phone
+    %%   Device <|-- Tablet
+    %%   UHOPE Employee <|-- Nurse
+    %%   Device <|-- Mobile Hospital Device
+    %%   UHOPE Employee <|-- Billing Employee
+    %%   UHOPE Employee <|-- System Administrator
+    %%   User <|-- Person

@@ -1,0 +1,22 @@
+As a Publisher, I want to sign up for an account, so that that I can publish my data packages.
+As an Admin, I want to invite publishers and consumers to join the site, so that that they can start contributing or using data.
+As a Publisher, I want to import my data package into my account, so that my data has a permanent online home to access.
+As a Publisher, I want to publish a data package, so that I can share the data package publicly with everyone.
+As a Publisher, I want to unpublish a data package, so that it is no longer visible to anyone.
+As a Publisher, I want to permanently delete a data package, so that that it no longer takes up storage space.
+As a Publisher, I want to validate the data I am about to publish, so that that I publish good data.
+As a Publisher, I want to publish a data package, so that I can share it with a few consumers.
+As a Publisher, I want to tag data package, so that that consumers can find and refer to it.
+As a Publisher, I want to see real examples of published packages so that I can understand how useful and simple the data package is.
+As a Consumer, I want to search data packages, so that that I can find the ones that fit my needs.
+As a Consumer, I want to view a data package online, so that I can get a sense of whether this is the data package I want.
+As a Consumer, I want to download the data package in one file, so that that I don't have to download descriptor and each resource by hand.
+As a Consumer, I want to view the data package that I have downloaded before, so that that I can decide if I should update or not.
+As a Consumer, I want to know that the data I am downloading is good and can be relied on, so that that I don't have to check it myself or run into annoying bugs later on.
+As an Admin, I want to set key configuration parameters for my site deployment.
+As an Admin, I want to see key metrics about usage such as users, API usage, downloads, so that that I know how things are going.
+As an Admin, I want to set a pricing plan and a billing system, so that that I can charge its users.
+As a Publisher, I want to invite consumers to my account, so that that they are authorized to publish data packages.
+As a Publisher, I want to remove someone from membership in my account, so that they no longer have the ability to publish or modify my data packages.
+As a Publisher, I want to know if this site has a pricing plan and what the prices are, so I can choose the most fitted one.
+As a Consumer, I want to see a publisher's details, so that I can discover their packages and get a sense of how active and good they are.
