@@ -57,3 +57,67 @@ Rendered from the Mermaid gold standards. Click an image to open its SVG and zoo
 [Mermaid source](../2_gold_standard_domain_models/ticket.mmd) · [SVG image](ticket.svg)
 
 [![Ticket domain model](ticket.svg)](ticket.svg)
+
+## Additional projects
+
+Expert class diagrams from two further appendices (addition, not part of Bragilovski et al. 2025). Inheritance is not drawn; it is listed in the `%%` comments. Sources, conversion rules and limits: [additional projects](../docs/additional-projects.md).
+
+### Hospital, group 01
+
+[Mermaid source](../2_gold_standard_domain_models/hospital_g01.mmd) · [User stories](../1_user_stories/hospital_g01.txt) · [SVG image](hospital_g01.svg)
+
+[![Hospital, group 01 domain model](hospital_g01.svg)](hospital_g01.svg)
+
+### Hospital, group 02
+
+[Mermaid source](../2_gold_standard_domain_models/hospital_g02.mmd) · [User stories](../1_user_stories/hospital_g02.txt) · [SVG image](hospital_g02.svg)
+
+[![Hospital, group 02 domain model](hospital_g02.svg)](hospital_g02.svg)
+
+### Hospital, group 06
+
+[Mermaid source](../2_gold_standard_domain_models/hospital_g06.mmd) · [User stories](../1_user_stories/hospital_g06.txt) · [SVG image](hospital_g06.svg)
+
+[![Hospital, group 06 domain model](hospital_g06.svg)](hospital_g06.svg)
+
+### Hospital, group 10
+
+[Mermaid source](../2_gold_standard_domain_models/hospital_g10.mmd) · [User stories](../1_user_stories/hospital_g10.txt) · [SVG image](hospital_g10.svg)
+
+[![Hospital, group 10 domain model](hospital_g10.svg)](hospital_g10.svg)
+
+### Hospital, group 12
+
+[Mermaid source](../2_gold_standard_domain_models/hospital_g12.mmd) · [User stories](../1_user_stories/hospital_g12.txt) · [SVG image](hospital_g12.svg)
+
+[![Hospital, group 12 domain model](hospital_g12.svg)](hospital_g12.svg)
+
+### Football portal, group 05
+
+[Mermaid source](../2_gold_standard_domain_models/football_g05.mmd) · [User stories](../1_user_stories/football_g05.txt) · [SVG image](football_g05.svg)
+
+[![Football portal, group 05 domain model](football_g05.svg)](football_g05.svg)
+
+### Football portal, group 08
+
+[Mermaid source](../2_gold_standard_domain_models/football_g08.mmd) · [User stories](../1_user_stories/football_g08.txt) · [SVG image](football_g08.svg)
+
+[![Football portal, group 08 domain model](football_g08.svg)](football_g08.svg)
+
+### Football portal, group 11
+
+[Mermaid source](../2_gold_standard_domain_models/football_g11.mmd) · [User stories](../1_user_stories/football_g11.txt) · [SVG image](football_g11.svg)
+
+[![Football portal, group 11 domain model](football_g11.svg)](football_g11.svg)
+
+### Football portal, group 14
+
+[Mermaid source](../2_gold_standard_domain_models/football_g14.mmd) · [User stories](../1_user_stories/football_g14.txt) · [SVG image](football_g14.svg)
+
+[![Football portal, group 14 domain model](football_g14.svg)](football_g14.svg)
+
+### Data Hub
+
+[Mermaid source](../2_gold_standard_domain_models/datahub.mmd) · [User stories](../1_user_stories/datahub.txt) · [SVG image](datahub.svg)
+
+[![Data Hub domain model](datahub.svg)](datahub.svg)

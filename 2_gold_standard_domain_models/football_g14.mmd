@@ -1,0 +1,142 @@
+classDiagram
+    %% Project: International football association portal, group 14
+    %% Source: Dalpiaz, Sturm, Gieske (2020), Extraction of Conceptual Models: User Stories vs. Use Cases, https://doi.org/10.5281/zenodo.4121935, CC BY 4.0.
+    %% Expert (gold) class diagram: g14-US.uxf (UMLet); user stories: IFA/g14-us/g14-us-req-cm.pdf.
+    %% Converted with scripts/additional_projects/; rules and limits in docs/additional-projects.md.
+    %% Class labels are copied exactly from the expert diagram, including spelling errors.
+    %% Associations, aggregations and compositions become undirected -- edges; duplicates are merged.
+    %% Inheritance, attributes, operations, multiplicities and relationship labels are not part of the gold model;
+    %% inheritance links are listed as comments below.
+    %% Corrections to the expert diagram are marked below and listed in docs/additional-projects.md.
+    class C001["IFA Employee"]
+    class C002["IFA Manager"]
+    class C003["Match official"]
+    %% Label corrected (misspelling): expert diagram has "Team Mananger".
+    class C004["Team Manager"]
+    class C005["Team Staff Member"]
+    class C006["Stakeholder"]
+    class C007["League"]
+    class C008["RuleSet"]
+    %% Label corrected (misspelling): expert diagram has "IFA adminstrator".
+    class C009["IFA administrator"]
+    class C010["Team"]
+    class C011["Game"]
+    class C012["Personal Schedule"]
+    class C013["Schedule"]
+    class C014["Budget"]
+    class C015["IFA Budget Auditor"]
+    class C016["Transaction"]
+    %% Label corrected (misspelling): expert diagram has "Priviligae".
+    class C017["Privilege"]
+    class C018["Notification Policy"]
+    class C019["Notification"]
+    class C020["Player"]
+    class C021["Statistics"]
+    class C022["Game Event"]
+    class C023["Fan"]
+
+    %% Association: RuleSet -- IFA administrator
+    %% Expert diagram: directed association "inputs"; directed association "applies" (drawn more than once, merged).
+    C008 -- C009
+
+    %% Association: League -- IFA administrator
+    %% Expert diagram: directed association "manages".
+    C007 -- C009
+
+    %% Association: Team -- IFA administrator
+    %% Expert diagram: directed association "registers".
+    C010 -- C009
+
+    %% Association: Team -- IFA Manager
+    %% Expert diagram: directed association "approves".
+    C010 -- C002
+
+    %% Association: League -- IFA Manager
+    %% Expert diagram: directed association "approves".
+    C007 -- C002
+
+    %% Association: Game -- IFA Employee
+    %% Expert diagram: directed association "schedules".
+    C011 -- C001
+
+    %% Association: Match official -- IFA Employee
+    %% Expert diagram: directed association "allocates".
+    C003 -- C001
+
+    %% Association: Game -- Match official
+    %% Expert diagram: directed association "is assigned to".
+    C011 -- C003
+
+    %% Association: Personal Schedule -- Match official
+    %% Expert diagram: directed association "has".
+    C012 -- C003
+
+    %% Association: Game -- Schedule
+    %% Expert diagram: directed association "consists of".
+    C011 -- C013
+
+    %% Association: Schedule -- IFA Employee
+    %% Expert diagram: directed association "approves".
+    C013 -- C001
+
+    %% Association: Budget -- IFA Budget Auditor
+    %% Expert diagram: directed association "controls and audits".
+    C014 -- C015
+
+    %% Association: Budget -- Team
+    %% Expert diagram: directed association "has".
+    C014 -- C010
+
+    %% Association: Transaction -- Team
+    %% Expert diagram: directed association "has".
+    C016 -- C010
+
+    %% Association: Privilege -- Team Manager
+    %% Expert diagram: directed association "assigns".
+    C017 -- C004
+
+    %% Association: Team Staff Member -- Privilege
+    %% Expert diagram: directed association "relates to".
+    C005 -- C017
+
+    %% Association: Notification Policy -- Stakeholder
+    %% Expert diagram: directed association "sets".
+    C018 -- C006
+
+    %% Association: Notification -- Stakeholder
+    %% Expert diagram: directed association "gets".
+    C019 -- C006
+
+    %% Association: Game Event -- Game
+    %% Expert diagram: directed association "consists of".
+    C022 -- C011
+
+    %% Association: Game Event -- Match official
+    %% Expert diagram: directed association "reports".
+    C022 -- C003
+
+    %% Association: Statistics -- Stakeholder
+    %% Expert diagram: directed association "checks".
+    C021 -- C006
+
+    %% Association: Player -- Statistics
+    %% Expert diagram: directed association.
+    C020 -- C021
+
+    %% Association: Game -- Statistics
+    %% Expert diagram: directed association.
+    C011 -- C021
+
+    %% Association: Game Event -- Statistics
+    %% Expert diagram: directed association.
+    C022 -- C021
+
+    %% Inheritance in the expert diagram (general -- specific), not counted as associations:
+    %%   Stakeholder <|-- IFA Manager
+    %%   Stakeholder <|-- IFA Employee
+    %%   Stakeholder <|-- Match official
+    %%   Stakeholder <|-- Team Manager
+    %%   Stakeholder <|-- Team Staff Member
+    %%   Stakeholder <|-- IFA administrator
+    %%   Stakeholder <|-- IFA Budget Auditor
+    %%   Stakeholder <|-- Fan
